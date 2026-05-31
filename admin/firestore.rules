@@ -1,0 +1,43 @@
+rules_version = '2';
+
+// ==========================================================================
+// SN ART — Firestore Security Rules
+//
+// Paste these into: Firebase Console > Firestore Database > Rules > Publish.
+//
+// Model:
+//   - Anyone may READ products (so the public storefront can list them).
+//   - Only signed-in users whose UID exists as a document in /admins
+//     may CREATE / UPDATE / DELETE products.
+//   - The /admins collection is NOT writable from the client. You add admin
+//     UIDs manually in the Firebase console (see admin/SETUP.md).
+// ==========================================================================
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // True when the requester is signed in AND listed as an admin.
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // ---- Products ----
+    match /products/{productId} {
+      allow read: if true;          // public catalogue
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ---- Admins registry ----
+    // Admins can read the list (used by the panel to verify access),
+    // but nobody can modify it from the client — manage it in the console.
+    match /admins/{uid} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

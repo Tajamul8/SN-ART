@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SN ART — Admin Panel</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233D2B1A'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23D4A843'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- ============================ LOGIN VIEW ============================ -->
+    <section class="auth-view" id="authView">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <span class="auth-logo">SN<span class="auth-accent">ART</span></span>
+                <span class="auth-sub">Admin Console</span>
+            </div>
+
+            <!-- Step 1: phone number -->
+            <div class="auth-step" id="stepPhone">
+                <h2 class="auth-title">Sign in</h2>
+                <p class="auth-hint">Enter the admin phone number. We'll text you a one-time code.</p>
+                <label class="field-label" for="phoneInput">Phone number</label>
+                <input type="tel" id="phoneInput" class="auth-input" placeholder="+91 98765 43210" autocomplete="tel">
+                <div id="recaptchaContainer" class="recaptcha-box"></div>
+                <button class="admin-btn admin-btn-primary block" id="sendCodeBtn">Send Code</button>
+            </div>
+
+            <!-- Step 2: OTP -->
+            <div class="auth-step hidden" id="stepOtp">
+                <h2 class="auth-title">Verify</h2>
+                <p class="auth-hint">Enter the 6-digit code sent to <span id="otpPhoneLabel"></span>.</p>
+                <label class="field-label" for="otpInput">Verification code</label>
+                <input type="text" id="otpInput" class="auth-input otp" placeholder="123456" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+                <button class="admin-btn admin-btn-primary block" id="verifyCodeBtn">Verify &amp; Sign In</button>
+                <button class="admin-btn admin-btn-ghost block" id="changePhoneBtn">Use a different number</button>
+            </div>
+
+            <!-- Access denied (signed in but not an admin) -->
+            <div class="auth-step hidden" id="stepDenied">
+                <h2 class="auth-title">Access pending</h2>
+                <p class="auth-hint">This number is verified but not yet authorised as an admin.</p>
+                <p class="auth-hint">Add the User ID below to the <code>admins</code> collection in Firestore, then sign in again.</p>
+                <div class="uid-box" id="deniedUid">—</div>
+                <button class="admin-btn admin-btn-ghost block" id="deniedSignOutBtn">Sign out</button>
+            </div>
+
+            <p class="auth-error" id="authError"></p>
+        </div>
+    </section>
+
+    <!-- ============================ DASHBOARD VIEW ============================ -->
+    <section class="dash-view hidden" id="dashView">
+        <header class="dash-header">
+            <div class="dash-brand">
+                <span class="auth-logo sm">SN<span class="auth-accent">ART</span></span>
+                <span class="dash-tag">Product Manager</span>
+            </div>
+            <div class="dash-header-actions">
+                <span class="admin-who" id="adminWho"></span>
+                <button class="admin-btn admin-btn-primary" id="addProductBtn">+ Add Product</button>
+                <button class="admin-btn admin-btn-ghost" id="signOutBtn">Sign out</button>
+            </div>
+        </header>
+
+        <div class="dash-body">
+            <!-- Toolbar -->
+            <div class="dash-toolbar">
+                <div class="stat-pill">Total Products: <strong id="countTotal">0</strong></div>
+                <div class="stat-pill">Out of Stock: <strong id="countOos">0</strong></div>
+                <input type="search" id="searchBox" class="dash-search" placeholder="Search products…">
+            </div>
+
+            <!-- Loading / empty states -->
+            <div class="dash-state" id="loadingState">Loading products…</div>
+            <div class="dash-state hidden" id="emptyState">No products yet. Click “Add Product” to create your first one.</div>
+
+            <!-- Product table (desktop) / cards (mobile) -->
+            <div class="table-wrap" id="tableWrap">
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th class="col-img">Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th class="col-num">Price (₹)</th>
+                            <th class="col-num">Stock</th>
+                            <th class="col-actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================ PRODUCT MODAL ============================ -->
+    <div class="modal-overlay hidden" id="productModal">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Product</h3>
+                <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            </div>
+            <form id="productForm" class="modal-form">
+                <input type="hidden" id="productId">
+
+                <div class="form-grid">
+                    <div class="form-field span-2">
+                        <label for="f_name">Name *</label>
+                        <input type="text" id="f_name" required maxlength="120" placeholder="e.g. Paisley Pashmina Stole">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="f_category">Category *</label>
+                        <select id="f_category" required>
+                            <option value="tokri">Kashmiri Tokri Baskets</option>
+                            <option value="papier_mache">Papier Mâché Artifacts</option>
+                            <option value="pashmina">Pashmina &amp; Kani Shawls</option>
+                            <option value="wood_carving">Wood Carving &amp; Khatamband</option>
+                            <option value="namda">Namda Rugs</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="f_price">Price (₹) *</label>
+                        <input type="number" id="f_price" required min="0" step="1" placeholder="3200">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="f_stock">Stock *</label>
+                        <input type="number" id="f_stock" required min="0" step="1" placeholder="10">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="f_badge">Badge</label>
+                        <input type="text" id="f_badge" maxlength="40" placeholder="GI-Tagged">
+                    </div>
+
+                    <div class="form-field span-2">
+                        <label for="f_image">Image URL *</label>
+                        <input type="url" id="f_image" required placeholder="assets/pashmina_shawl.png or https://…">
+                    </div>
+
+                    <div class="form-field span-2">
+                        <label for="f_description">Description *</label>
+                        <textarea id="f_description" required rows="4" maxlength="800" placeholder="Describe the craft, materials, origin…"></textarea>
+                    </div>
+
+                    <div class="form-field span-2 img-preview-field">
+                        <span class="preview-label">Preview</span>
+                        <img id="imgPreview" class="img-preview" alt="Image preview" src="">
+                    </div>
+                </div>
+
+                <p class="form-error" id="formError"></p>
+
+                <div class="modal-footer">
+                    <button type="button" class="admin-btn admin-btn-ghost" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="admin-btn admin-btn-primary" id="saveBtn">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================ DELETE CONFIRM MODAL ============================ -->
+    <div class="modal-overlay hidden" id="deleteModal">
+        <div class="modal modal-sm" role="dialog" aria-modal="true">
+            <div class="modal-header">
+                <h3>Delete product?</h3>
+                <button class="modal-close" id="deleteCloseBtn" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-form">
+                <p class="confirm-text">This will permanently remove <strong id="deleteName">this product</strong> from the catalogue. This action cannot be undone.</p>
+                <div class="modal-footer">
+                    <button type="button" class="admin-btn admin-btn-ghost" id="deleteCancelBtn">Cancel</button>
+                    <button type="button" class="admin-btn admin-btn-danger" id="deleteConfirmBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
