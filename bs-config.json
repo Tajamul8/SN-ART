@@ -1,0 +1,15 @@
+{
+  "port": 3010,
+  "ui": {
+    "port": 3011
+  },
+  "server": {
+    "baseDir": "./"
+  },
+  "files": [
+    "./**/*.{html,htm,css,js}"
+  ],
+  "watchOptions": {
+    "ignored": "node_modules"
+  }
+}

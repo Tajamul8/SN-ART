@@ -1,0 +1,12 @@
+{
+  "name": "sn-art",
+  "version": "1.0.0",
+  "description": "SN ART - Kashmir Artisan Crafts Luxury Catalog Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

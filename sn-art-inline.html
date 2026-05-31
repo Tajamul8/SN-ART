@@ -1,0 +1,5006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SN ART – Kashmir Artisan Crafts | Authentic Handmade Luxury</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233D2B1A'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23D4A843'%3ES%3C/text%3E%3C/svg%3E">
+    <meta name="description" content="Discover SN ART, a premium heritage catalog of authentic Kashmiri crafts. Shop authentic Handwoven Tokri Baskets, Papier Mâché, Pashmina Shawls, and Walnut Wood Carvings certified by master artisans.">
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Kashmiri crafts, Pashmina Shawls, Papier Mache, Walnut Wood Carvings, Tokri Baskets, Kashmir Heritage, Handmade Luxury, GI-tagged crafts">
+    <meta name="author" content="SN ART">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SN ART – Kashmir Artisan Crafts">
+    <meta property="og:description" content="Shop authentic, GI-tagged Kashmiri crafts direct from master artisans. Experience the heritage of Pashmina, Papier Mâché, Tokri baskets, and Wood Carvings.">
+    <meta property="og:image" content="sn-art/assets/hero_artisan.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <style>
+/* ==========================================================================
+   SN ART - Premium Heritage Design System
+   ========================================================================== */
+
+/* Design Tokens & Custom Properties */
+:root {
+    /* Color Palette */
+    --color-saffron: #C8882A;
+    --color-walnut: #3D2B1A;
+    --color-brown-secondary: #6B4226;
+    --color-cream: #FAF6EE;
+    --color-ivory: #F2EBD9;
+    --color-gold: #D4A843;
+    --color-muted: #B5A593;
+    --color-chinar-red: #A63425;
+    --color-dal-teal: #2A6B6B;
+    
+    /* Text Color Settings */
+    --color-text-dark: #EAE2D5;
+    --color-text-light: #FAF6EE;
+    --color-border: #222222;
+    --color-border-dark: #333333;
+
+    /* Explicit Dark Mode Background Scopes */
+    --color-bg-page: #050505;
+    --color-bg-card: #121212;
+
+    /* Typography */
+    --font-logo: 'Cinzel', serif;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Jost', sans-serif;
+
+    /* Layout & Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-fast: all 0.25s ease;
+    --container-max-width: 1320px;
+    --header-height: 85px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    font-size: 16px;
+    background-color: var(--color-bg-page);
+    color: var(--color-text-dark);
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-bg-page);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(200, 136, 42, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(42, 107, 107, 0.05) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(166, 52, 37, 0.03) 0px, transparent 60%),
+        radial-gradient(at 0% 100%, rgba(42, 107, 107, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(200, 136, 42, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-page);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-walnut);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-saffron);
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+p {
+    font-family: var(--font-body);
+    color: var(--color-muted);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-fast);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: var(--transition-fast);
+}
+
+/* Utility Containers */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+}
+
+.section-spacing {
+    padding: clamp(3.5rem, 8vw, 7.5rem) 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.italic-garamond {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    left: 150%;
+}
+
+.btn-primary {
+    background-color: var(--color-walnut);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-walnut);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-saffron);
+    border-color: var(--color-saffron);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-text-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-bg-page);
+}
+
+.btn-sm {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Announcement Bar (Continuous horizontal scroll)
+   ========================================================================== */
+.announcement-bar {
+    background-color: var(--color-walnut);
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.6rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border-bottom: 1px solid var(--color-border-dark);
+}
+
+.announcement-bar-track {
+    display: inline-block;
+    animation: marquee-announcement 35s linear infinite;
+}
+
+.announcement-bar-track span {
+    display: inline-block;
+    padding-right: 4rem;
+}
+
+@keyframes marquee-announcement {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ==========================================================================
+   Header & Sticky Navigation
+   ========================================================================== */
+.main-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--header-height);
+    transition: var(--transition-smooth);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+
+.main-header.scrolled {
+    background-color: rgba(5, 5, 5, 0.98);
+    height: 70px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+}
+
+.nav-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.brand-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-title {
+    font-family: var(--font-body);
+    font-size: 1.7rem;
+    font-weight: 800; /* Bold modern styling */
+    color: var(--color-text-dark);
+    letter-spacing: 0.25em;
+    line-height: 1.1;
+    transition: var(--transition-smooth);
+}
+
+.logo-accent {
+    font-weight: 300; /* Thinner weight for ART */
+    color: var(--color-gold);
+    margin-left: 0.05em;
+}
+
+.logo-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--color-saffron);
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.main-header.scrolled .logo-title {
+    font-size: 1.4rem;
+}
+
+.main-header.scrolled .logo-subtitle {
+    font-size: 0.55rem;
+}
+
+/* Nav Menu Links */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2.2rem;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-muted);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-saffron);
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-saffron);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+/* Nav Actions Group */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.action-btn {
+    color: var(--color-text-dark);
+    position: relative;
+    padding: 0.5rem;
+}
+
+.action-btn:hover {
+    color: var(--color-saffron);
+    transform: translateY(-2px);
+}
+
+.action-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--color-chinar-red);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-toggle-btn {
+    display: none;
+    color: var(--color-text-dark);
+}
+
+/* ==========================================================================
+   Hero Section (Split Screen Editorial Layout)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: auto;
+    background-color: var(--color-bg-page);
+    overflow: visible;
+}
+
+.hero-video-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 5, 0.4) 0%,
+        rgba(5, 5, 5, 0.85) 100%
+    );
+    z-index: 2;
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    z-index: 3;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    opacity: 0.8;
+    animation: hero-indicator-bounce 2s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes hero-indicator-bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -10px); }
+    60% { transform: translate(-50%, -5px); }
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0;
+    z-index: 10;
+    text-align: center;
+    color: var(--color-text-light);
+}
+
+.hero-subtitle-tag {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-gold);
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    color: var(--color-text-light);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.hero-actions .btn-secondary {
+    color: var(--color-text-light);
+    border-color: var(--color-text-light);
+}
+
+.hero-actions .btn-secondary:hover {
+    background-color: var(--color-text-light);
+    color: var(--color-bg-page);
+}
+
+/* Stats Row */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    background: rgba(61, 43, 26, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    padding: 2rem 3rem;
+    margin-top: 3.5rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+
+.hero-stats:hover {
+    border-color: var(--color-saffron);
+    box-shadow: 0 35px 70px rgba(200, 136, 42, 0.15);
+    transform: translateY(-3px);
+}
+
+/* Artisan Story Preview Card */
+.artisan-preview-card {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: rgba(18, 12, 8, 0.65);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 168, 67, 0.25);
+    padding: 1.2rem;
+    max-width: 330px;
+    text-align: left;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+    transition: var(--transition-smooth);
+}
+
+.artisan-preview-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-saffron);
+    box-shadow: 0 25px 45px rgba(200, 136, 42, 0.2);
+}
+
+.ap-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-gold);
+    flex-shrink: 0;
+}
+
+.ap-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ap-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ap-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.ap-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-text-light);
+    margin: 2px 0 4px;
+}
+
+.ap-quote {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ap-link {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-saffron);
+    font-weight: 600;
+}
+
+.ap-link:hover {
+    color: var(--color-gold);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-ivory);
+    margin-top: 5px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background-color: rgba(242, 235, 217, 0.2);
+}
+
+/* Editorial Masterpiece Gallery Section */
+.editorial-gallery-section {
+    background-color: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Right Side: Editorial Grid Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    height: 680px;
+    gap: 1.2rem;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.grid-item img, .grid-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.grid-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(5, 5, 5, 0.95), transparent);
+    padding: 2.2rem 1.5rem 1.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.gallery-item-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    font-weight: 600;
+}
+
+.gallery-item-size {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.grid-item:hover img, .grid-item:hover video {
+    transform: scale(1.08);
+}
+
+.grid-item:hover .grid-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Asymmetric Placements */
+.item-main {
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+}
+
+.item-sec-1 {
+    grid-column: 4 / 7;
+    grid-row: 1 / 3;
+}
+
+.item-sec-2 {
+    grid-column: 4 / 7;
+    grid-row: 3 / 5;
+}
+
+.item-sec-3 {
+    grid-column: 1 / 3;
+    grid-row: 4 / 7;
+}
+
+.item-sec-4 {
+    grid-column: 3 / 5;
+    grid-row: 5 / 7;
+}
+
+.item-sec-5 {
+    grid-column: 5 / 7;
+    grid-row: 5 / 7;
+}
+
+/* ==========================================================================
+   Scrolling Heritage Marquee Divider
+   ========================================================================== */
+.marquee-divider {
+    background-color: var(--color-walnut);
+    border-top: 1px solid var(--color-saffron);
+    border-bottom: 1px solid var(--color-saffron);
+    padding: 1.2rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+}
+
+.marquee-content {
+    display: flex;
+}
+
+.marquee-slide {
+    display: flex;
+    align-items: center;
+    animation: loop-marquee 30s linear infinite;
+}
+
+.marquee-slide span {
+    font-family: var(--font-logo);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+    padding: 0 2rem;
+}
+
+.marquee-slide .bullet {
+    font-size: 0.8rem;
+    color: var(--color-saffron);
+}
+
+@keyframes loop-marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ==========================================================================
+   Trust Indicators
+   ========================================================================== */
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.trust-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.4) 0%, rgba(10, 10, 10, 0.6) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: var(--transition-smooth);
+}
+
+.trust-card:hover {
+    border-color: var(--color-saffron);
+    background-color: var(--color-cream);
+    transform: translateY(-5px);
+}
+
+.trust-icon {
+    color: var(--color-saffron);
+    margin-bottom: 1.2rem;
+    display: inline-block;
+}
+
+.trust-title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.6rem;
+}
+
+.trust-text {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+/* ==========================================================================
+   Browse By Craft (Category Cards with Hover Overlays)
+   ========================================================================== */
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-weight: 650;
+    display: inline-block;
+    background: linear-gradient(to right, var(--color-saffron), var(--color-chinar-red), var(--color-dal-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.6rem;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--color-text-dark);
+}
+
+.header-divider {
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-saffron);
+    margin-top: 1rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    perspective: 1500px;
+}
+
+.category-card {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(10, 10, 10, 0.75) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transform-style: preserve-3d;
+    transition: var(--transition-smooth);
+    transform: translate3d(0, 0, 0);
+}
+
+.category-image {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 320px;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.category-pattern-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(200, 136, 42, 0.15) 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: 0;
+    transition: var(--transition-smooth);
+    mix-blend-mode: color-burn;
+}
+
+.category-content {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-card-title {
+    font-size: 1.6rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+}
+
+.category-card-desc {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 1.8rem;
+}
+
+.category-btn {
+    align-self: flex-start;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid var(--color-text-dark);
+    padding-bottom: 3px;
+}
+
+.category-btn:hover {
+    color: var(--color-saffron);
+    border-color: var(--color-saffron);
+    padding-left: 5px;
+}
+
+/* Hover effects */
+.category-card:hover {
+    transform: translate3d(0, -10px, 15px) rotateX(-1deg) rotateY(1.5deg);
+    box-shadow: 0 25px 50px rgba(61, 43, 26, 0.12),
+                0 0 30px rgba(200, 136, 42, 0.05);
+    border-color: rgba(200, 136, 42, 0.25);
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.08) translateZ(10px);
+}
+
+.category-card:hover .category-pattern-overlay {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Featured Products Grid & Product Cards
+   ========================================================================== */
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-fast);
+}
+
+.filter-tab:hover, .filter-tab.active {
+    color: var(--color-cream);
+    background-color: var(--color-walnut);
+    border-color: var(--color-walnut);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.2rem;
+    perspective: 1500px;
+}
+
+.product-card {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(10, 10, 10, 0.75) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0);
+}
+
+.product-card:hover {
+    transform: translate3d(0, -12px, 20px) rotateX(1.8deg) rotateY(-1.8deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
+                0 0 40px rgba(200, 136, 42, 0.15);
+    border-color: rgba(200, 136, 42, 0.35);
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.08);
+}
+
+.product-card:hover .product-image-container {
+    transform: translate3d(0, 0, 10px);
+}
+
+.product-card:hover .product-info {
+    transform: translate3d(0, 0, 15px);
+}
+
+.product-image-container {
+    position: relative;
+    padding-top: 110%; /* Elegant aspect ratio */
+    overflow: hidden;
+    background-color: var(--color-bg-card);
+}
+
+.product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+/* Badges */
+.product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: var(--color-walnut);
+    color: var(--color-gold);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.7rem;
+    z-index: 10;
+}
+
+.product-badge.gi {
+    background-color: var(--color-saffron);
+    color: white;
+}
+
+/* Product Absolute Actions & Custom Hover Effects */
+.absolute-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(18, 12, 8, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+    opacity: 0;
+    transform: translate3d(12px, 0, 0);
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .absolute-heart {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.absolute-heart.active {
+    color: var(--color-chinar-red);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.absolute-heart:hover {
+    background-color: var(--color-walnut);
+    color: var(--color-gold);
+    transform: scale(1.1) !important;
+}
+
+/* Quick View Overlay Button (Centered on hover) */
+.quick-view-overlay-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -30%, 0);
+    padding: 0.7rem 1.4rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    background: rgba(18, 12, 8, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 168, 67, 0.25);
+    color: var(--color-gold);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    z-index: 12;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card:hover .quick-view-overlay-btn {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: auto;
+}
+
+.quick-view-overlay-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-walnut);
+    border-color: var(--color-gold);
+}
+
+/* Add to Cart Sliding Button (Slides up from bottom of image container) */
+.add-to-cart-slide-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, var(--color-walnut), var(--color-brown-secondary));
+    color: var(--color-text-light);
+    border-top: 1px solid rgba(212, 168, 67, 0.3);
+    padding: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transform: translate3d(0, 100%, 0);
+    transition: var(--transition-smooth);
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.product-card:hover .add-to-cart-slide-btn {
+    transform: translate3d(0, 0, 0);
+}
+
+.add-to-cart-slide-btn:hover {
+    background: var(--color-saffron);
+    color: white;
+}
+
+/* Product Info */
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-cat {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-saffron);
+    margin-bottom: 0.4rem;
+}
+
+.product-name {
+    font-size: 1.3rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.product-rating {
+    font-size: 0.8rem;
+    color: var(--color-gold);
+    margin-bottom: 0.8rem;
+}
+
+.product-reviews-count {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    margin-left: 4px;
+}
+
+.product-price-row {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.wishlist-heart-btn {
+    color: var(--color-muted);
+}
+
+.wishlist-heart-btn.active {
+    color: var(--color-chinar-red);
+}
+
+/* ==========================================================================
+   Heritage Story Section (Dark Accent Panels)
+   ========================================================================== */
+.heritage-story-section {
+    background-color: var(--color-walnut);
+    color: var(--color-cream);
+    position: relative;
+    padding: 9rem 0;
+    overflow: hidden;
+}
+
+.story-background-decor {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z' fill='none' stroke='%235a432d' stroke-width='1'/%3E%3C/svg%3E");
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.story-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 6rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.story-image {
+    position: relative;
+}
+
+.story-image img {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-border-dark);
+}
+
+.story-quote-card {
+    position: absolute;
+    bottom: -40px;
+    right: -30px;
+    background-color: var(--color-brown-secondary);
+    padding: 2rem;
+    max-width: 320px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--color-saffron);
+}
+
+.quote-mark {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--color-saffron);
+    line-height: 0.5;
+    display: block;
+}
+
+.quote-text {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--color-cream);
+    margin-bottom: 0.8rem;
+}
+
+.quote-author {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+}
+
+.story-content {
+    padding-left: 2rem;
+}
+
+.story-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.story-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--color-cream);
+    margin-bottom: 2rem;
+}
+
+.story-divider {
+    width: 80px;
+    height: 1px;
+    background-color: var(--color-saffron);
+    margin-bottom: 2.2rem;
+}
+
+.story-paragraph {
+    font-size: 1.05rem;
+    color: var(--color-ivory);
+    margin-bottom: 1.8rem;
+    line-height: 1.8;
+}
+
+.story-signature {
+    margin-top: 3rem;
+}
+
+.sig-name {
+    font-family: var(--font-logo);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+}
+
+.sig-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-muted);
+}
+
+/* ==========================================================================
+   Artisan Heritage Section
+   ========================================================================== */
+.artisan-carousel-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.artisan-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    background-color: var(--color-bg-card);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-border);
+}
+
+.artisan-photo-side {
+    position: relative;
+    overflow: hidden;
+}
+
+.artisan-photo-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+    transition: var(--transition-smooth);
+}
+
+.artisan-info-side {
+    padding: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.artisan-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.artisan-badge {
+    background-color: var(--color-saffron);
+    color: white;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.8rem;
+    font-weight: 500;
+}
+
+.artisan-experience {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+.artisan-name {
+    font-size: 2.2rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.artisan-bio {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+}
+
+.artisan-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.artisan-nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-dark);
+}
+
+.artisan-nav-btn:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-bg-page);
+    border-color: var(--color-text-dark);
+}
+
+.artisan-indicator {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Testimonial Review Cards
+   ========================================================================== */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid transparent;
+    padding: 3rem 2.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+    border-color: var(--color-saffron);
+    transform: translateY(-5px);
+}
+
+.rating {
+    color: var(--color-gold);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-text-dark);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.patron-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.patron-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-walnut);
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.patron-name {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.patron-location {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    display: block;
+}
+
+/* ==========================================================================
+   Newsletter Section
+   ========================================================================== */
+.newsletter-section {
+    background: linear-gradient(135deg, var(--color-walnut) 0%, var(--color-brown-secondary) 100%);
+    color: var(--color-cream);
+    padding: 7.5rem 0;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, var(--color-saffron) 0%, var(--color-chinar-red) 33%, var(--color-dal-teal) 66%, var(--color-gold) 100%) 1;
+}
+
+.newsletter-container {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-sub {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.newsletter-title {
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    color: var(--color-cream);
+    margin-bottom: 1.2rem;
+}
+
+.newsletter-text {
+    font-size: 1rem;
+    color: var(--color-ivory);
+    margin-bottom: 2.8rem;
+}
+
+.newsletter-form {
+    display: flex;
+    border: 1px solid rgba(212, 168, 67, 0.3);
+    background-color: rgba(250, 246, 238, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 4px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-cream);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+}
+
+.newsletter-form button {
+    padding: 0 2.5rem;
+}
+
+.newsletter-success {
+    display: none;
+    margin-top: 1.5rem;
+    color: var(--color-dal-teal);
+    font-size: 0.95rem;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.main-footer {
+    background-color: var(--color-walnut);
+    color: var(--color-cream);
+    padding: 6rem 0 3rem;
+    border-top: 1px solid var(--color-border-dark);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 4.5rem;
+}
+
+.footer-logo .logo-title {
+    color: var(--color-cream);
+}
+
+.footer-desc {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.footer-socials a {
+    color: var(--color-muted);
+}
+
+.footer-socials a:hover {
+    color: var(--color-saffron);
+}
+
+.footer-title {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    margin-bottom: 1.8rem;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.9rem;
+}
+
+.footer-col ul li a {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.footer-col ul li a:hover {
+    color: var(--color-cream);
+    padding-left: 4px;
+}
+
+.contact-col {
+    font-size: 0.9rem;
+}
+
+.contact-item {
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.contact-item strong {
+    color: var(--color-gold);
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid var(--color-border-dark);
+    padding-top: 2.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+
+.payment-methods span {
+    border: 1px solid var(--color-border-dark);
+    padding: 0.2rem 0.6rem;
+}
+
+/* ==========================================================================
+   Side Drawers & Overlays
+   ========================================================================== */
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(61, 43, 26, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--color-bg-page);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    transform: translate3d(100%, 0, 0);
+    transition: var(--transition-smooth);
+}
+
+.drawer.active {
+    transform: translate3d(0, 0, 0);
+}
+
+.drawer-header {
+    padding: 1.8rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawer-header h3 {
+    font-size: 1.6rem;
+    color: var(--color-text-dark);
+}
+
+.drawer-close-btn {
+    color: var(--color-text-dark);
+    font-size: 1.2rem;
+}
+
+.drawer-close-btn:hover {
+    color: var(--color-saffron);
+}
+
+.drawer-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+.drawer-footer {
+    padding: 2rem;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg-card);
+}
+
+/* Cart Item Cards */
+.cart-item {
+    display: flex;
+    gap: 1.2rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    background-color: var(--color-ivory);
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.3rem;
+}
+
+.cart-item-price {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-saffron);
+    margin-bottom: 0.6rem;
+}
+
+.cart-item-qty-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--color-border);
+    width: fit-content;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--color-text-dark);
+}
+
+.qty-val {
+    width: 32px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.cart-item-remove {
+    align-self: flex-start;
+    color: var(--color-muted);
+}
+
+.cart-item-remove:hover {
+    color: var(--color-chinar-red);
+}
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.empty-icon {
+    color: var(--color-border);
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+}
+
+/* Drawer Footer Info */
+.cart-subtotal-row, .cart-shipping-row, .cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.cart-total-row {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.drawer-footer-note {
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--color-muted);
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Search Overlay Modal
+   ========================================================================== */
+.search-modal {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-bg-page);
+    z-index: 1002;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, -20px, 0);
+    transition: var(--transition-smooth);
+}
+
+.search-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+}
+
+.search-modal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.search-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+.search-icon {
+    color: var(--color-saffron);
+}
+
+.search-modal-header input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--color-text-dark);
+}
+
+.search-modal-header input::placeholder {
+    color: var(--color-border);
+}
+
+.search-modal-header input:focus {
+    outline: none;
+}
+
+.search-close-btn {
+    color: var(--color-text-dark);
+}
+
+.search-close-btn:hover {
+    color: var(--color-saffron);
+}
+
+.search-suggestions h4, .search-results-wrapper h4 {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-muted);
+    margin-bottom: 1.2rem;
+}
+
+.suggestion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.suggestion-tags button {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    color: var(--color-text-dark);
+}
+
+.suggestion-tags button:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-bg-page);
+    border-color: var(--color-text-dark);
+}
+
+.search-results-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* ==========================================================================
+   Product Quick View Modal (High-End Gallery overlay)
+   ========================================================================== */
+.quick-view-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(61, 43, 26, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1005;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.quick-view-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.quick-view-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%) scale(0.95);
+    width: 90%;
+    max-width: 960px;
+    background-color: var(--color-bg-page);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+    z-index: 1006;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.quick-view-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.qv-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--color-text-dark);
+    z-index: 10;
+}
+
+.qv-close-btn:hover {
+    color: var(--color-saffron);
+}
+
+.quick-view-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+}
+
+.qv-image-side {
+    background-color: var(--color-bg-card);
+    height: 550px;
+}
+
+.qv-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.qv-info-side {
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    height: 550px;
+}
+
+.qv-cat {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-saffron);
+    margin-bottom: 0.8rem;
+}
+
+.qv-title {
+    font-size: 2.2rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.qv-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.qv-price {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--color-text-dark);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.qv-desc {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.qv-meta-bullets {
+    margin-bottom: 2.2rem;
+    list-style: none;
+}
+
+.qv-meta-bullets li {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.qv-meta-bullets li::before {
+    content: '✦';
+    color: var(--color-saffron);
+    font-size: 0.65rem;
+}
+
+.qv-actions-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.qv-actions-row .btn {
+    flex-grow: 1;
+}
+
+.qv-wishlist-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-dark);
+}
+
+.qv-wishlist-btn:hover {
+    color: var(--color-chinar-red);
+    border-color: var(--color-chinar-red);
+}
+
+.qv-wishlist-btn.active {
+    color: var(--color-chinar-red);
+    background-color: rgba(166, 52, 37, 0.05);
+    border-color: var(--color-chinar-red);
+}
+
+/* ==========================================================================
+   WhatsApp Floating Widget
+   ========================================================================== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: rgba(61, 43, 26, 0.8);
+    color: var(--color-gold);
+    border: 1px solid rgba(200, 136, 42, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.8rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 10px 30px rgba(61, 43, 26, 0.3);
+    z-index: 99;
+    transition: var(--transition-smooth);
+}
+
+.whatsapp-float:hover {
+    background-color: var(--color-saffron);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.whatsapp-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.whatsapp-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Reveal on Scroll Animations
+   ========================================================================== */
+.reveal,
+.reveal-fade-up {
+    opacity: 0;
+    transform: translate3d(0, 45px, 0);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-scale-in {
+    opacity: 0;
+    transform: scale3d(0.94, 0.94, 0.94);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-slide-left {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-slide-right {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+/* Active States */
+.reveal.reveal-active,
+.reveal-fade-up.reveal-active,
+.reveal-scale-in.reveal-active,
+.reveal-slide-left.reveal-active,
+.reveal-slide-right.reveal-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+/* Delay helpers */
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
+.reveal-delay-5 { transition-delay: 0.75s; }
+
+/* ==========================================================================
+   Mobile Menu Overlay Drawer
+   ========================================================================== */
+@media (max-width: 991px) {
+    .mobile-toggle-btn {
+        display: block;
+        order: 1;
+    }
+    
+    .brand-logo {
+        order: 2;
+    }
+    
+    .nav-actions {
+        order: 3;
+    }
+
+    .profile-btn-desktop {
+        display: none;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        background-color: var(--color-bg-page);
+        border-right: 1px solid var(--color-border);
+        box-shadow: 10px 0 40px rgba(0,0,0,0.5);
+        padding: 5rem 2rem 2rem;
+        transform: translate3d(-100%, 0, 0);
+        transition: var(--transition-smooth);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        color: var(--color-text-dark);
+    }
+}
+
+/* ==========================================================================
+   Responsive Grid Systems (Media Queries)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 3.2rem;
+    }
+    
+    .hero-container {
+        gap: 2rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-container {
+        flex-direction: column;
+        gap: 3rem;
+        text-align: center;
+        padding: 6rem 1rem;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        padding: 1.5rem 2rem;
+    }
+
+    .artisan-preview-card {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 1.5rem auto 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .gallery-grid {
+        height: 400px;
+    }
+
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .story-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .story-content {
+        padding-left: 0;
+    }
+
+    .story-quote-card {
+        right: 0;
+        bottom: -20px;
+    }
+
+    .artisan-showcase {
+        grid-template-columns: 1fr;
+    }
+    
+    .artisan-photo-side img {
+        min-height: 300px;
+        height: 350px;
+    }
+
+    .artisan-info-side {
+        padding: 3rem 2rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-spacing {
+        padding: 4.5rem 0;
+    }
+
+    .logo-title {
+        font-size: 1.3rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.52rem;
+        letter-spacing: 0.25em;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        height: auto;
+        gap: 1rem;
+    }
+
+    .grid-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        height: 240px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .quick-view-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qv-image-side {
+        height: 300px;
+    }
+
+    .qv-info-side {
+        height: auto;
+        padding: 2rem;
+    }
+    
+    .quick-view-modal {
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+
+    .category-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-image {
+        min-height: 240px;
+    }
+    
+    .category-content {
+        padding: 2rem;
+    }
+
+    .story-quote-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 2rem auto 0;
+        max-width: 100%;
+    }
+
+    /* Tablet: drawers take most of the screen, never overflow */
+    .drawer {
+        max-width: 400px;
+    }
+
+    /* Catalogue header stacks; filter tabs become a horizontal scroll strip */
+    .header-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.2rem;
+    }
+
+    .filter-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 0.4rem;
+    }
+
+    .filter-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-tab {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .hero-stats {
+        padding: 1.5rem;
+        width: 100%;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+    }
+
+    .search-modal-container {
+        padding-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-item {
+        height: 250px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-tabs {
+        justify-content: center;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .newsletter-form input {
+        background-color: rgba(250, 246, 238, 0.08);
+        border: 1px solid rgba(212, 168, 67, 0.25);
+        color: var(--color-cream);
+    }
+
+    .newsletter-form button {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-actions {
+        gap: 0.6rem;
+    }
+
+    .artisan-name {
+        font-size: 1.8rem;
+    }
+
+    .artisan-bio {
+        font-size: 1.15rem;
+    }
+
+    .artisan-info-side {
+        padding: 2rem 1.2rem;
+    }
+
+    /* Small phones: drawers and modals go edge-to-edge */
+    .drawer {
+        max-width: 100%;
+    }
+
+    .drawer-header,
+    .drawer-body,
+    .drawer-footer {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+
+    .drawer-header h3 {
+        font-size: 1.35rem;
+    }
+
+    .quick-view-modal {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .quick-view-modal.active {
+        transform: none;
+    }
+
+    .qv-info-side {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .nav-actions {
+        gap: 0.4rem;
+    }
+
+    .action-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .hero-subtitle-tag {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+    }
+
+    .grid-item {
+        height: 220px;
+    }
+
+    .marquee-slide span {
+        font-size: 0.95rem;
+        padding: 0 1.2rem;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+}
+
+/* Touch & Mobile Always-Visible Card Buttons */
+@media (hover: none), (max-width: 1024px) {
+    .absolute-heart {
+        opacity: 1 !important;
+        transform: translate3d(0, 0, 0) !important;
+    }
+    .add-to-cart-slide-btn {
+        transform: translate3d(0, 0, 0) !important;
+        background: var(--color-saffron) !important;
+        color: white !important;
+    }
+    .quick-view-overlay-btn {
+        display: none !important;
+    }
+    .product-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+    }
+    .category-card:hover {
+        transform: translateY(-5px) !important;
+    }
+}
+
+/* ==========================================================================
+   Luxury Page Loader
+   ========================================================================== */
+.luxury-loader {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-walnut);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.9s ease, visibility 0.9s;
+}
+
+.luxury-loader.fade-out {
+    transform: translate3d(0, -100%, 0);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    color: var(--color-cream);
+}
+
+.loader-logo {
+    font-family: var(--font-body);
+    font-size: 2.8rem;
+    font-weight: 800; /* Bold modern styling */
+    letter-spacing: 0.25em;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: loader-fade-in-up 0.8s forwards 0.2s;
+    color: var(--color-gold);
+}
+
+.loader-tag {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-cream);
+    display: block;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: loader-fade-in-up 0.8s forwards 0.4s;
+}
+
+.loader-bar-container {
+    width: 180px;
+    height: 1px;
+    background-color: rgba(242, 235, 217, 0.15);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.loader-bar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-saffron);
+    transform: translate3d(-100%, 0, 0);
+    animation: loader-slide 1.5s cubic-bezier(0.65, 0.05, 0.36, 1) forwards 0.1s;
+}
+
+@keyframes loader-fade-in-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loader-slide {
+    to {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+/* ==========================================================================
+   Mouse Follow Glow Custom Cursor Light
+   ========================================================================== */
+.mouse-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(200, 136, 42, 0.06) 0%, rgba(200, 136, 42, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* ==========================================================================
+   Testimonial Slider Carousel Styles
+   ========================================================================== */
+.testimonials-slider-container {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+.testimonials-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.testimonials-slider-container .testimonial-card {
+    margin: 0;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(61, 43, 26, 0.04);
+}
+
+.slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.slider-nav-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-dark);
+    border-radius: 50%;
+    transition: var(--transition-fast);
+}
+
+.slider-nav-btn:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-bg-page);
+    border-color: var(--color-text-dark);
+    transform: scale(1.05);
+}
+
+.slider-dots {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.slider-dot.active {
+    background-color: var(--color-saffron);
+    transform: scale(1.3);
+}
+
+/* ==========================================================================
+   Professional Colorful Accent Combos (Inspired by Kani shawl borders)
+   ========================================================================== */
+
+/* Multi-colored Kani shawl border line */
+.main-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--color-saffron) 0%, var(--color-chinar-red) 33%, var(--color-dal-teal) 66%, var(--color-gold) 100%);
+    z-index: 10;
+    opacity: 0;
+    transition: var(--transition-smooth);
+}
+
+.main-header.scrolled::after {
+    opacity: 1;
+}
+
+.main-footer {
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, var(--color-saffron) 0%, var(--color-chinar-red) 33%, var(--color-dal-teal) 66%, var(--color-gold) 100%) 1;
+}
+
+/* Category-specific color accents on hover */
+.category-card[data-category="tokri"]:hover {
+    border-color: var(--color-saffron);
+    box-shadow: 0 25px 50px rgba(200, 136, 42, 0.08);
+}
+
+.category-card[data-category="papier_mache"]:hover {
+    border-color: var(--color-dal-teal);
+    box-shadow: 0 25px 50px rgba(42, 107, 107, 0.08);
+}
+
+.category-card[data-category="pashmina"]:hover {
+    border-color: var(--color-chinar-red);
+    box-shadow: 0 25px 50px rgba(166, 52, 37, 0.08);
+}
+
+.category-card[data-category="wood_carving"]:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 25px 50px rgba(212, 168, 67, 0.08);
+}
+
+/* Color-coded badges for products */
+.product-badge.gi {
+    background-color: var(--color-saffron);
+    color: var(--color-cream);
+}
+
+.product-badge.artisan {
+    background-color: var(--color-dal-teal);
+    color: var(--color-cream);
+}
+
+.product-badge.masterpiece {
+    background-color: var(--color-chinar-red);
+    color: var(--color-gold);
+}
+
+/* Colorful counter highlights */
+.hero-stats .stat-item:nth-of-type(1) .counter {
+    color: var(--color-saffron);
+}
+
+.hero-stats .stat-item:nth-of-type(2) .counter {
+    color: var(--color-chinar-red);
+}
+
+.hero-stats .stat-item:nth-of-type(3) .counter {
+    color: var(--color-dal-teal);
+}
+
+/* Trust Card Base Gradients & Hover Accents */
+.trust-card {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(5, 5, 5, 0.75) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trust-card:nth-of-type(1) {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(200, 136, 42, 0.03) 100%);
+}
+.trust-card:nth-of-type(2) {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(42, 107, 107, 0.03) 100%);
+}
+.trust-card:nth-of-type(3) {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(212, 168, 67, 0.03) 100%);
+}
+.trust-card:nth-of-type(4) {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(166, 52, 37, 0.03) 100%);
+}
+.trust-card:nth-of-type(5) {
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.5) 0%, rgba(200, 136, 42, 0.03) 100%);
+}
+
+.trust-card:hover .trust-icon {
+    transform: scale(1.1) rotate(5deg);
+    transition: var(--transition-smooth);
+}
+
+.trust-card:nth-of-type(1):hover {
+    border-color: var(--color-saffron);
+    box-shadow: 0 15px 30px rgba(200, 136, 42, 0.08);
+}
+.trust-card:nth-of-type(2):hover {
+    border-color: var(--color-dal-teal);
+    box-shadow: 0 15px 30px rgba(42, 107, 107, 0.08);
+}
+.trust-card:nth-of-type(3):hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 15px 30px rgba(212, 168, 67, 0.08);
+}
+.trust-card:nth-of-type(4):hover {
+    border-color: var(--color-chinar-red);
+    box-shadow: 0 15px 30px rgba(166, 52, 37, 0.08);
+}
+.trust-card:nth-of-type(5):hover {
+    border-color: var(--color-saffron);
+    box-shadow: 0 15px 30px rgba(200, 136, 42, 0.08);
+}
+
+/* Category-specific card background gradients */
+.category-card[data-category="tokri"] {
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, rgba(200, 136, 42, 0.05) 100%);
+}
+.category-card[data-category="papier_mache"] {
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, rgba(42, 107, 107, 0.05) 100%);
+}
+.category-card[data-category="pashmina"] {
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, rgba(166, 52, 37, 0.05) 100%);
+}
+.category-card[data-category="wood_carving"] {
+    background: linear-gradient(135deg, var(--color-bg-card) 0%, rgba(212, 168, 67, 0.05) 100%);
+}
+
+/* Kani Ribbon Dividers */
+.kani-border-line {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(
+        to right,
+        var(--color-saffron) 0%,
+        var(--color-gold) 20%,
+        var(--color-chinar-red) 40%,
+        var(--color-walnut) 50%,
+        var(--color-dal-teal) 60%,
+        var(--color-gold) 80%,
+        var(--color-saffron) 100%
+    );
+    opacity: 0.85;
+}
+
+/* Product Card Custom Gradient Accents & Ribbon Borders */
+.product-card {
+    background: linear-gradient(180deg, var(--color-bg-card) 0%, rgba(5, 5, 5, 0.85) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card-gi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-saffron);
+    z-index: 5;
+}
+
+.product-card-artisan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-dal-teal);
+    z-index: 5;
+}
+
+.product-card-masterpiece::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-chinar-red);
+    z-index: 5;
+}
+
+/* Testimonial Glassmorphic Cards */
+.testimonials-slider-container .testimonial-card {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+</style>
+</head>
+<body>
+
+    <!-- Luxury Page Loader -->
+    <div class="luxury-loader" id="pageLoader">
+        <div class="loader-content">
+            <span class="loader-logo">SN<span class="logo-accent">ART</span></span>
+            <span class="loader-tag">Kashmir Artisan Crafts</span>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Follow Glow -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="announcement-bar-track">
+            <span>Free Shipping on Orders Above ₹2,500 • Authentic GI-Tagged Crafts • Artisan Certified • Direct from the Valley</span>
+            <span>Free Shipping on Orders Above ₹2,500 • Authentic GI-Tagged Crafts • Artisan Certified • Direct from the Valley</span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="main-header" id="mainHeader">
+        <div class="nav-container">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="brand-logo">
+                <span class="logo-title">SN<span class="logo-accent">ART</span></span>
+                <span class="logo-subtitle">Kashmir Artisan Crafts</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#browseCraft" class="nav-link">Collections</a></li>
+                    <li><a href="#featuredProducts" class="nav-link">Shop</a></li>
+                    <li><a href="#heritageStory" class="nav-link">Heritage</a></li>
+                    <li><a href="#artisanHeritage" class="nav-link">Our Artisans</a></li>
+                    <li><a href="#whatsappInquiry" class="nav-link">Customize</a></li>
+                    <li><a href="#footer" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Action Icons -->
+            <div class="nav-actions">
+                <button class="action-btn" id="searchTrigger" aria-label="Search Catalog">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button class="action-btn" id="wishlistTrigger" aria-label="View Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="action-badge" id="wishlistBadge">0</span>
+                </button>
+                <button class="action-btn" id="cartTrigger" aria-label="View Shopping Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="action-badge" id="cartBadge">0</span>
+                </button>
+                <a href="#newsletter" class="action-btn profile-btn-desktop" aria-label="Join Club">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Video -->
+    <section class="hero-section">
+        <div class="hero-video-container">
+            <video autoplay loop muted playsinline class="hero-video-bg">
+                <source src="sn-art/assets/woven_basket_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-scroll-indicator">
+                <span>Scroll to Discover</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-top: 4px;">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content reveal">
+                <span class="hero-subtitle-tag">Authentic Kashmiri Crafts • Handcrafted Since 1967</span>
+                <h1 class="hero-title">The Soul of Kashmir <br><span class="italic-garamond">In Your Hands</span></h1>
+                <p class="hero-description">
+                    Celebrate generations of exquisite Kashmiri craftsmanship. Discover hand-painted lacquer papier-mâché, fine hand-loomed Pashmina wool, and intricately carved walnut woodwork, created by master artisans keeping heritage alive.
+                </p>
+                <div class="hero-actions">
+                    <a href="#featuredProducts" class="btn btn-primary">Explore Collection</a>
+                    <a href="#editorialGallery" class="btn btn-secondary">View Gallery</a>
+                </div>
+                <!-- Hero Statistics -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number"><span class="counter" data-target="340">0</span>+</span>
+                        <span class="stat-label">Master Artisans</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number"><span class="counter" data-target="18">0</span></span>
+                        <span class="stat-label">Craft Traditions</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number"><span class="counter" data-target="52000">0</span>+</span>
+                        <span class="stat-label">Customers</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artisan Story Preview Card -->
+            <div class="artisan-preview-card reveal">
+                <div class="ap-avatar">
+                    <img src="sn-art/assets/hero_artisan.png" alt="Ghulam Nabi">
+                </div>
+                <div class="ap-info">
+                    <span class="ap-label">Featured Artisan</span>
+                    <h4 class="ap-name">Ghulam Nabi</h4>
+                    <p class="ap-quote">"Weaving is a conversation with the willow stalks..."</p>
+                    <a href="#artisanHeritage" class="ap-link">Read Narrative ➔</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-indicators section-spacing">
+        <div class="container">
+            <div class="trust-grid">
+                <!-- 1. GI Tag Certified -->
+                <div class="trust-card reveal-fade-up">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🏷 GI Tag Certified</h3>
+                    <p class="trust-text">Authentic origin-certified Kashmiri luxury verifying authentic handmade heritage.</p>
+                </div>
+                <!-- 2. Free Shipping -->
+                <div class="trust-card reveal-fade-up reveal-delay-1">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🚚 Free Shipping</h3>
+                    <p class="trust-text">Complimentary secure shipping across India on all orders exceeding ₹2,500.</p>
+                </div>
+                <!-- 3. Artisan Direct -->
+                <div class="trust-card reveal-fade-up reveal-delay-2">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path>
+                            <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+                            <circle cx="12" cy="10" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🤝 Artisan Direct</h3>
+                    <p class="trust-text">Sourced directly from the families of weavers, woodcarvers, and painting masters.</p>
+                </div>
+                <!-- 4. Secure Payments -->
+                <div class="trust-card reveal-fade-up reveal-delay-3">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🔒 Secure Payments</h3>
+                    <p class="trust-text">SSL-encrypted checkout supporting cards, UPI, and net banking safely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Masterpiece Gallery Section (Scroll down to see the images) -->
+    <section class="editorial-gallery-section section-spacing" id="editorialGallery">
+        <div class="container">
+            <div class="section-header text-center reveal-fade-up">
+                <span class="section-subtitle">Visualizing the Heritage</span>
+                <h2 class="section-title">The Artisan Gallery</h2>
+                <div class="header-divider"></div>
+            </div>
+            
+            <div class="gallery-grid reveal-scale-in">
+                <!-- Item 1: Ghulam Nabi's Artisan Workshop -->
+                <div class="grid-item item-main">
+                    <img src="sn-art/assets/hero_artisan.png" alt="Kashmiri artisan weaving Tokri basket" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Artisan Workshop</span>
+                        <span class="gallery-item-size">Srinagar, Kashmir</span>
+                    </div>
+                </div>
+                <!-- Item 2: Kashmiri Willow Tokri -->
+                <div class="grid-item item-sec-1">
+                    <img src="sn-art/assets/tokri_basket.png" alt="Handwoven Tokri basket" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Kashmiri Willow Tokri</span>
+                        <span class="gallery-item-size">Real Size: 16" x 12" x 9"</span>
+                    </div>
+                </div>
+                <!-- Item 3: Walnut Wood Jewelry Box -->
+                <div class="grid-item item-sec-2">
+                    <img src="sn-art/assets/walnut_wood_box.png" alt="Hand-carved Kashmiri Walnut Wood Box" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Walnut Wood Box</span>
+                        <span class="gallery-item-size">Real Size: 8" x 6" x 4"</span>
+                    </div>
+                </div>
+                <!-- Item 4: Papier Mâché Vase -->
+                <div class="grid-item item-sec-3">
+                    <img src="sn-art/assets/papier_mache.png" alt="Kashmiri Papier Mache Urn" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Papier Mâché Art</span>
+                        <span class="gallery-item-size">Real Size: 12" H x 6" D</span>
+                    </div>
+                </div>
+                <!-- Item 5: Heirloom Pashmina Shawl -->
+                <div class="grid-item item-sec-4">
+                    <img src="sn-art/assets/pashmina_shawl.png" alt="Intricate Pashmina Shawl" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Pashmina & Kani</span>
+                        <span class="gallery-item-size">Real Size: 80" x 40"</span>
+                    </div>
+                </div>
+                <!-- Item 6: Namda Felted Rug -->
+                <div class="grid-item item-sec-5">
+                    <img src="sn-art/assets/namda_wool_rug.png" alt="Chain-stitch Felted Namda Rug" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Namda Felted Rug</span>
+                        <span class="gallery-item-size">Real Size: 6' x 4'</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Heritage Marquee -->
+    <section class="marquee-divider">
+        <div class="marquee-content">
+            <div class="marquee-slide">
+                <span>Handwoven Tokri</span> <span class="bullet">✦</span>
+                <span>Papier Mâché</span> <span class="bullet">✦</span>
+                <span>Pashmina & Kani</span> <span class="bullet">✦</span>
+                <span>Khatamband Art</span> <span class="bullet">✦</span>
+                <span>Walnut Carving</span> <span class="bullet">✦</span>
+                <span>Namda Rugs</span> <span class="bullet">✦</span>
+                <span>Sozni Embroidery</span> <span class="bullet">✦</span>
+                <span>Chain Stitch Craft</span> <span class="bullet">✦</span>
+            </div>
+            <div class="marquee-slide">
+                <span>Handwoven Tokri</span> <span class="bullet">✦</span>
+                <span>Papier Mâché</span> <span class="bullet">✦</span>
+                <span>Pashmina & Kani</span> <span class="bullet">✦</span>
+                <span>Khatamband Art</span> <span class="bullet">✦</span>
+                <span>Walnut Carving</span> <span class="bullet">✦</span>
+                <span>Namda Rugs</span> <span class="bullet">✦</span>
+                <span>Sozni Embroidery</span> <span class="bullet">✦</span>
+                <span>Chain Stitch Craft</span> <span class="bullet">✦</span>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Browse By Craft (Categories) -->
+    <section class="browse-craft section-spacing" id="browseCraft">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-subtitle">Exquisite Heritage Traditions</span>
+                <h2 class="section-title">Browse By Craft</h2>
+                <div class="header-divider"></div>
+            </div>
+            
+            <div class="category-grid">
+                <!-- Category 1: Kashmiri Tokri -->
+                <div class="category-card reveal-slide-left" data-category="tokri">
+                    <div class="category-image">
+                        <img src="sn-art/assets/tokri_basket.png" alt="Kashmiri Willow Tokri Basket" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Kashmiri Tokri Baskets</h3>
+                        <p class="category-card-desc">Handwoven willow basketry, combining rustic utility with elegant geometric patterns refined over centuries.</p>
+                        <button class="category-btn" onclick="filterProducts('tokri')">Explore Craft</button>
+                    </div>
+                </div>
+
+                <!-- Category 2: Papier Mache -->
+                <div class="category-card reveal-slide-right" data-category="papier_mache">
+                    <div class="category-image">
+                        <img src="sn-art/assets/papier_mache.png" alt="Kashmiri Papier Mache Urn" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Papier Mâché Artifacts</h3>
+                        <p class="category-card-desc">Intricately painted paper-pulp artifacts finished with lacquer, gold leaf, and miniature motifs.</p>
+                        <button class="category-btn" onclick="filterProducts('papier_mache')">Explore Craft</button>
+                    </div>
+                </div>
+
+                <!-- Category 3: Pashmina & Kani -->
+                <div class="category-card reveal-slide-left reveal-delay-1" data-category="pashmina">
+                    <div class="category-image">
+                        <img src="sn-art/assets/pashmina_shawl.png" alt="Paisley Pashmina Stole" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Pashmina & Kani Shawls</h3>
+                        <p class="category-card-desc">Whisper-soft heirloom shawls spun from Changthangi goat wool, featuring elaborate needlework.</p>
+                        <button class="category-btn" onclick="filterProducts('pashmina')">Explore Craft</button>
+                    </div>
+                </div>
+
+                <!-- Category 4: Walnut Wood & Khatamband -->
+                <div class="category-card reveal-slide-right reveal-delay-1" data-category="wood_carving">
+                    <div class="category-image">
+                        <img src="sn-art/assets/wood_carving.png" alt="Walnut Wood Chinar Plaque" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Wood Carving & Khatamband</h3>
+                        <p class="category-card-desc">Hand-carved seasoned walnut wood representing intricate foliage and interlocking geometric ceiling panels.</p>
+                        <button class="category-btn" onclick="filterProducts('wood_carving')">Explore Craft</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Featured Products -->
+    <section class="featured-products section-spacing" id="featuredProducts">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Museum Grade Catalogue</span>
+                <div class="header-flex">
+                    <h2 class="section-title">Featured Creations</h2>
+                    <!-- Category Filtering Tabs -->
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')">All Masterpieces</button>
+                        <button class="filter-tab" data-filter="tokri" onclick="filterProducts('tokri')">Baskets</button>
+                        <button class="filter-tab" data-filter="papier_mache" onclick="filterProducts('papier_mache')">Papier Mâché</button>
+                        <button class="filter-tab" data-filter="pashmina" onclick="filterProducts('pashmina')">Pashmina</button>
+                        <button class="filter-tab" data-filter="wood_carving" onclick="filterProducts('wood_carving')">Walnut Wood</button>
+                    </div>
+                </div>
+                <div class="header-divider"></div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be generated dynamically by JavaScript to facilitate wishlist, cart, filtering, and quick view -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Heritage Story Section -->
+    <section class="heritage-story-section reveal" id="heritageStory">
+        <div class="story-background-decor"></div>
+        <div class="story-container">
+            <div class="story-image">
+                <img src="sn-art/assets/dal_lake_scenic.png" alt="Sunset over Dal Lake Srinagar" loading="lazy">
+                <div class="story-quote-card">
+                    <span class="quote-mark">“</span>
+                    <p class="quote-text">If there is a heaven on earth, it's here, it's here, it's here.</p>
+                    <span class="quote-author">— Emperor Jehangir</span>
+                </div>
+            </div>
+            <div class="story-content">
+                <span class="story-subtitle">Crafting History Since 1967</span>
+                <h2 class="story-title">Where Every Thread Carries <br>The Spirit Of Kashmir</h2>
+                <div class="story-divider"></div>
+                <p class="story-paragraph">
+                    SN ART was born out of a deep reverence for the architectural lines, lake reflections, and historical artisan lanes of Srinagar. Our mission is to bridge the gap between generational master craftsmen and discerning patrons of luxury across the globe.
+                </p>
+                <p class="story-paragraph">
+                    Each creation in our catalogue is catalogued with its unique artisan lineage and GI certification (Geographical Indication). By bringing a piece of SN ART into your home, you support the preservation of ancient skills, ensuring these rich craft forms flourish for generations to come.
+                </p>
+                <div class="story-signature">
+                    <div class="sig-name">SN ART Heritage Guild</div>
+                    <div class="sig-title">Srinagar, Jammu & Kashmir</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Artisan Heritage Section -->
+    <section class="artisan-heritage section-spacing" id="artisanHeritage">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-subtitle">Meet Our Masters</span>
+                <h2 class="section-title">The Heart of the Craft</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <!-- Custom Editorial Layout for Artisans -->
+            <div class="artisan-carousel-container reveal">
+                <div class="artisan-showcase">
+                    <div class="artisan-photo-side">
+                        <img src="sn-art/assets/hero_artisan.png" alt="Ghulam Nabi, Master Weaver" id="artisanImg">
+                    </div>
+                    <div class="artisan-info-side">
+                        <div class="artisan-meta">
+                            <span class="artisan-badge" id="artisanSpecialty">Tokri Weaving</span>
+                            <span class="artisan-experience" id="artisanYears">45 Years of Experience</span>
+                        </div>
+                        <h3 class="artisan-name" id="artisanName">Ghulam Nabi</h3>
+                        <p class="artisan-bio" id="artisanBio">
+                            "Weaving is not just work; it is a conversation with the willow stalks. Each bend and knot is a decision passed down through my grandfather. We keep the soul of the wetlands alive in every basket we finish."
+                        </p>
+                        <div class="artisan-nav">
+                            <button class="artisan-nav-btn prev" id="artisanPrev" aria-label="Previous Artisan">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </button>
+                            <span class="artisan-indicator" id="artisanIndicator">1 / 4</span>
+                            <button class="artisan-nav-btn next" id="artisanNext" aria-label="Next Artisan">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div> <!-- artisan-info-side -->
+                </div> <!-- artisan-showcase -->
+            </div> <!-- artisan-carousel-container -->
+        </div> <!-- container -->
+    </section>
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Testimonials (Interactive Slider) -->
+    <section class="testimonials-section section-spacing">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-subtitle">Patron Reflections</span>
+                <h2 class="section-title">Voices of Appreciation</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <div class="testimonials-slider-container reveal">
+                <div class="testimonials-track" id="testimonialTrack">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">
+                                "The Paisley Pashmina Stole is a masterpiece. It literally feels like a whisper against the skin, and the intricacy of the Sozni work is breathtaking. It arrived in an elegant cedar box with a certificate signed by the artisan. Highly recommended!"
+                            </p>
+                            <div class="patron-info">
+                                <div class="patron-avatar">A</div>
+                                <div>
+                                    <h4 class="patron-name">Ananya Iyer</h4>
+                                    <span class="patron-location">Mumbai, Maharashtra</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">
+                                "The Walnut Wood Chinar panel adds a rich rustic soul to our living room. You can smell the walnut oil, and the details of the leaves are incredible. SN ART brings museum-grade authenticity to your doorstep."
+                            </p>
+                            <div class="patron-info">
+                                <div class="patron-avatar">R</div>
+                                <div>
+                                    <h4 class="patron-name">Rajesh Khatri</h4>
+                                    <span class="patron-location">New Delhi, NCR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">
+                                "I purchased the Handwoven Oval Market Basket. It is structurally solid yet incredibly lightweight. Knowing the name of the artisan, Ghulam Nabi, who crafted it over 12 hours makes it so special. Truly ethical luxury."
+                            </p>
+                            <div class="patron-info">
+                                <div class="patron-avatar">S</div>
+                                <div>
+                                    <h4 class="patron-name">Sushma Sen</h4>
+                                    <span class="patron-location">Bengaluru, Karnataka</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Control Bar -->
+                <div class="slider-controls">
+                    <button class="slider-nav-btn prev" id="testimonialPrev" aria-label="Previous Testimonial">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <div class="slider-dots" id="testimonialDots"></div>
+                    <button class="slider-nav-btn next" id="testimonialNext" aria-label="Next Testimonial">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="container">
+            <div class="newsletter-container reveal">
+                <span class="newsletter-sub">Stories From The Valley</span>
+                <h2 class="newsletter-title">Subscribe to the Heritage Chronicle</h2>
+                <p class="newsletter-text">
+                    Join our inner circle. Receive monthly dispatches on artisan stories, behind-the-scenes craft videos, historical perspectives, and priority access to limited custom collections.
+                </p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required aria-label="Email Address">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <div id="newsletterSuccess" class="newsletter-success">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Welcome to SN ART. Your invitation has been dispatched.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Col 1: Brand Story -->
+                <div class="footer-col brand-col">
+                    <a href="#" class="brand-logo footer-logo">
+                        <span class="logo-title">SN<span class="logo-accent">ART</span></span>
+                        <span class="logo-subtitle">Kashmir Artisan Crafts</span>
+                    </a>
+                    <p class="footer-desc">
+                        SN ART is an editorial design house and heritage craft collective dedicated to preserving and promoting authentic Kashmiri craftsmanship globally. Certified GI-Tag items sourced directly.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <line x1="4" y1="9" x2="20" y2="9"></line>
+                                <line x1="4" y1="15" x2="20" y2="15"></line>
+                                <line x1="10" y1="3" x2="10" y2="21"></line>
+                                <line x1="14" y1="3" x2="14" y2="21"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Collections -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Collections</h4>
+                    <ul>
+                        <li><a href="#featuredProducts" onclick="filterProducts('tokri')">Kashmiri Tokri Baskets</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('papier_mache')">Papier Mâché Art</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('pashmina')">Pashmina & Kani Shawls</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('wood_carving')">Walnut Wood Panels</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('all')">Custom Orders</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Company -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Our House</h4>
+                    <ul>
+                        <li><a href="#heritageStory">Our Narrative</a></li>
+                        <li><a href="#artisanHeritage">Artisan Guild</a></li>
+                        <li><a href="#">GI-Tag Verification</a></li>
+                        <li><a href="#">Sustainable Growth</a></li>
+                        <li><a href="#">Press Editorial</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Support -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Assistance</h4>
+                    <ul>
+                        <li><a href="#">Secure Checkout</a></li>
+                        <li><a href="#">Shipping & Insurance</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Care Guides</a></li>
+                        <li><a href="#footer">Contact Concierge</a></li>
+                        <li><a href="javascript:void(0)" id="termsTrigger">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 5: Contact Info -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <p class="contact-item">
+                        <strong>Studio:</strong> Lal Chowk, Srinagar, Jammu & Kashmir 190001
+                    </p>
+                    <p class="contact-item">
+                        <strong>Support:</strong> concierge@snart.in
+                    </p>
+                    <p class="contact-item">
+                        <strong>Telephone:</strong> +91 (194) 247-8900
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SN ART Kashmir. All Rights Reserved. Crafted with reverence.</p>
+                <div class="payment-methods">
+                    <span>UPI</span>
+                    <span>Visa</span>
+                    <span>Mastercard</span>
+                    <span>Amex</span>
+                    <span>NetBanking</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Side Drawers & Overlays -->
+
+    <!-- Shopping Cart Drawer -->
+    <div class="drawer-overlay" id="cartDrawerOverlay"></div>
+    <div class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+        <div class="drawer-header">
+            <h3 id="cartDrawerTitle">Shopping Cart</h3>
+            <button class="drawer-close-btn" id="cartCloseBtn" aria-label="Close Cart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div id="cartEmptyState" class="empty-state">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="empty-icon">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <p>Your luxury collection is currently empty.</p>
+                <a href="#featuredProducts" class="btn btn-primary btn-sm" id="cartShopNow">Begin Exploring</a>
+            </div>
+            <div id="cartItemsList" class="cart-items-list">
+                <!-- Cart items generated by JavaScript -->
+            </div>
+        </div>
+        <div class="drawer-footer" id="cartDrawerFooter" style="display: none;">
+            <div class="cart-subtotal-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <div class="cart-shipping-row">
+                <span>Shipping</span>
+                <span id="cartShipping">FREE</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Estimated Total</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+            <p class="drawer-footer-note">Complimentary shipping & insurance included.</p>
+        </div>
+    </div>
+
+    <!-- Wishlist Drawer -->
+    <div class="drawer-overlay" id="wishlistDrawerOverlay"></div>
+    <div class="drawer" id="wishlistDrawer" role="dialog" aria-modal="true" aria-labelledby="wishlistDrawerTitle">
+        <div class="drawer-header">
+            <h3 id="wishlistDrawerTitle">Wishlist</h3>
+            <button class="drawer-close-btn" id="wishlistCloseBtn" aria-label="Close Wishlist">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div id="wishlistEmptyState" class="empty-state">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="empty-icon">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <p>No masterpieces saved to your wishlist yet.</p>
+                <a href="#featuredProducts" class="btn btn-primary btn-sm" id="wishlistShopNow">Add Creations</a>
+            </div>
+            <div id="wishlistItemsList" class="wishlist-items-list">
+                <!-- Wishlist items generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay Modal -->
+    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search Catalog">
+        <div class="search-modal-container">
+            <div class="search-modal-header">
+                <div class="search-input-wrapper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="search-icon">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search for Pashmina, Tokri, Walnut wood..." autocomplete="off">
+                </div>
+                <button class="search-close-btn" id="searchCloseBtn" aria-label="Close Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-modal-body">
+                <div class="search-suggestions" id="searchSuggestions">
+                    <h4>Suggested Collections</h4>
+                    <div class="suggestion-tags">
+                        <button onclick="fillSearch('Pashmina')">Pashmina Shawl</button>
+                        <button onclick="fillSearch('Tokri')">Tokri Basket</button>
+                        <button onclick="fillSearch('Chinar')">Chinar Wood Carving</button>
+                        <button onclick="fillSearch('Vase')">Papier Mâché Vase</button>
+                    </div>
+                </div>
+                <div class="search-results-wrapper">
+                    <h4 id="searchResultsHeader" style="display: none;">Search Results</h4>
+                    <div class="search-results-list" id="searchResultsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="quick-view-overlay" id="quickViewOverlay"></div>
+    <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle">
+        <button class="qv-close-btn" id="quickViewCloseBtn" aria-label="Close Details">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="quick-view-grid" id="quickViewContent">
+            <!-- Rendered by JavaScript dynamically -->
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal Drawer -->
+    <div class="drawer-overlay" id="termsDrawerOverlay"></div>
+    <div class="drawer" id="termsDrawer" role="dialog" aria-modal="true" aria-labelledby="termsDrawerTitle">
+        <div class="drawer-header">
+            <h3 id="termsDrawerTitle">Terms & Conditions</h3>
+            <button class="drawer-close-btn" id="termsCloseBtn" aria-label="Close Terms">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body terms-body">
+            <p class="terms-intro">Welcome to SN ART. By exploring our catalog and placing inquiries or orders, you agree to follow the terms below, which are designed to support and protect our community of master artisans in Jammu & Kashmir.</p>
+            
+            <div class="terms-section">
+                <h4>1. Artisan Craft & Authenticity</h4>
+                <p>SN ART guarantees that all catalog items are authentic, certified products sourced directly from local Kashmiri artisan families. Items labeled with "GI-Tagged" are certified Geographical Indications verifying authentic regional heritage.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h4>2. Handmade Variations</h4>
+                <p>Because our creations—including hand-spun Pashmina shawls, lacquer papier-mâché, hand-carved walnut wood, and willow tokri baskets—are entirely made by hand using traditional looms and chisels, minor variations in pattern, texture, size, and coloring are natural. These differences are not flaws, but rather the unique signature of individual craftsmanship.</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>3. Custom Orders & Commissions</h4>
+                <p>Custom commissions (such as personalized wood carvings, special shawl weaving codes, or size modifications) require a 50% advance deposit. Once production begins, custom commissions cannot be cancelled or refunded, as raw materials are explicitly acquired for the artisan's labor.</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>4. Shipping, Transit & Insurance</h4>
+                <p>We provide secure shipping across India, with free shipping on orders above ₹2,500. Due to the handcrafted nature and intensive labor of some products, delivery timelines may vary. All high-value shipments include full transit insurance coverage.</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>5. Returns & Handcrafted Care</h4>
+                <p>Standard items can be returned or exchanged within 14 days of delivery, provided they are in their original, unused condition. Customers are responsible for reviewing and adhering to the specific care guides provided (e.g. strict dry clean instructions for Pashmina wool, avoiding dry heat/moisture for walnut wood).</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>6. Governing Law & Jurisdiction</h4>
+                <p>These terms and conditions are governed by the laws of India. Any legal disputes or claims arising out of transactions with SN ART shall be subject to the exclusive jurisdiction of the courts of Srinagar, Jammu & Kashmir.</p>
+            </div>
+
+            <p class="terms-footer-note">For custom requirements or support, contact our concierge desk at concierge@snart.in.</p>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Integration -->
+    <a href="https://wa.me/911942478900?text=I%20am%20interested%20in%20discussing%20a%20custom%20Kashmiri%20artisan%20commission%20with%20Woven%20Valley." class="whatsapp-float" id="whatsappInquiry" target="_blank" rel="noopener noreferrer" aria-label="Inquire on WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.13-1.347a9.945 9.945 0 004.887 1.277h.005c5.505 0 9.988-4.478 9.99-9.985A9.972 9.972 0 0012.012 2zm5.72 13.1c-.244.688-1.201 1.249-1.648 1.286-.445.037-.887.218-2.88-.574-2.548-1.01-4.154-3.578-4.282-3.748-.127-.17-1.026-1.365-1.026-2.599 0-1.233.637-1.84.892-2.105.255-.265.552-.332.736-.332.184 0 .368.002.529.01.17.008.397-.065.622.48.243.588.823 2.01.894 2.152.07.141.117.306.02.494-.095.188-.142.306-.283.47l-.282.33c-.142.164-.296.34-.127.63.169.29.749 1.232 1.606 1.994.814.723 1.498.948 1.71.135.213-.813.468-1.077.71-1.077.241 0 .482.113.68.225.198.113 1.249.588 1.462.695.213.106.354.16.406.25.052.09.052.522-.192 1.21z"/>
+        </svg>
+        <span class="whatsapp-label">Artisan Commission</span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+// SN ART - Heritage eCommerce Logic
+
+// ==========================================================================
+// 1. Mock Database: Masterpiece Catalog
+// ==========================================================================
+const products = [
+    {
+        id: "p1",
+        name: "Oval Market Tokri",
+        category: "tokri",
+        categoryName: "Kashmiri Tokri Baskets",
+        price: 3200,
+        rating: 5.0,
+        reviews: 18,
+        image: "sn-art/assets/tokri_basket.png",
+        badge: "GI-Tagged",
+        details: "Handwoven in the wetlands of Ganderbal, this oval wicker basket utilizes finest local willow. Known for its high load-bearing capacity and timeless structural beauty, it is perfect for market shopping, picnics, or rustic home styling.",
+        dimensions: "16\" x 12\" x 9\" (excluding handle)",
+        material: "Organic Willow Wicker",
+        origin: "Ganderbal, Jammu & Kashmir"
+    },
+    {
+        id: "p2",
+        name: "Decorative Papier Mâché Vase",
+        category: "papier_mache",
+        categoryName: "Papier Mâché Artifacts",
+        price: 4800,
+        rating: 5.0,
+        reviews: 24,
+        image: "sn-art/assets/papier_mache.png",
+        badge: "Artisan Crafted",
+        details: "An exquisite papier-mâché vase decorated with Gul-andar-Gul (flower within flower) patterns. Masterfully painted by hand using natural mineral pigments and sealed with layers of genuine lacquer for a high-gloss museum finish.",
+        dimensions: "12\" Height x 6\" Diameter",
+        material: "Recycled Paper Pulp, Mineral Colors, Lacquer",
+        origin: "Zadibal, Srinagar"
+    },
+    {
+        id: "p3",
+        name: "Paisley Pashmina Stole",
+        category: "pashmina",
+        categoryName: "Pashmina & Kani Shawls",
+        price: 12500,
+        rating: 5.0,
+        reviews: 32,
+        image: "sn-art/assets/pashmina_shawl.png",
+        badge: "Pure GI Pashmina",
+        details: "Woven on traditional wooden looms from whisper-soft hand-spun Changthangi cashmere. Adorned with delicate Sozni embroidery along the borders, depicting traditional Kashmiri paisley motifs that take weeks of meticulous needlework.",
+        dimensions: "80\" x 28\"",
+        material: "100% Cashmere Pashmina Wool",
+        origin: "Kanihama, Kashmir"
+    },
+    {
+        id: "p4",
+        name: "Walnut Chinar Wall Art",
+        category: "wood_carving",
+        categoryName: "Wood Carving & Khatamband",
+        price: 6400,
+        rating: 5.0,
+        reviews: 15,
+        image: "sn-art/assets/wood_carving.png",
+        badge: "Masterpiece",
+        details: "A solid seasoned walnut wood plaque displaying deep relief carving of the iconic autumn Chinar leaf. Meticulously shaped using chisels by master woodcarvers, showcasing natural grains and stained with light walnut oil.",
+        dimensions: "18\" x 18\" x 1.5\"",
+        material: "Seasoned Solid Walnut Wood",
+        origin: "Safakadal, Srinagar"
+    },
+    {
+        id: "p5",
+        name: "Willow Picnic Basket",
+        category: "tokri",
+        categoryName: "Kashmiri Tokri Baskets",
+        price: 2800,
+        rating: 4.8,
+        reviews: 12,
+        image: "sn-art/assets/tokri_basket.png",
+        badge: "Handwoven",
+        details: "A robust rectangular basket with double-lidded openings and leather straps, handcrafted for outdoor excursions. Features excellent ventilation and a traditional wicker handle integrated directly into the structural frame.",
+        dimensions: "14\" x 10\" x 8\"",
+        material: "Natural Willow Wicker, Vegan Leather Straps",
+        origin: "Ganderbal, Jammu & Kashmir"
+    },
+    {
+        id: "p6",
+        name: "Imperial Kani Shawl",
+        category: "pashmina",
+        categoryName: "Pashmina & Kani Shawls",
+        price: 22500,
+        rating: 5.0,
+        reviews: 8,
+        image: "sn-art/assets/pashmina_shawl.png",
+        badge: "Limited Edition",
+        details: "A highly prized Kani shawl, woven using small eyeless wooden sticks called 'Kanis' rather than shuttles. The pattern is woven code-by-code according to a written script called 'Talim', creating an heirloom masterpiece.",
+        dimensions: "80\" x 40\"",
+        material: "100% Changthangi Cashmere",
+        origin: "Kanihama, Kashmir"
+    }
+];
+
+// ==========================================================================
+// 2. Artisan Team Directory Data
+// ==========================================================================
+const artisans = [
+    {
+        name: "Ghulam Nabi",
+        specialty: "Tokri Weaving",
+        experience: "45 Years of Experience",
+        bio: "\"Weaving is not just work; it is a conversation with the willow stalks. Each bend and knot is a decision passed down through my grandfather. We keep the soul of the wetlands alive in every basket we finish.\"",
+        image: "sn-art/assets/hero_artisan.png"
+    },
+    {
+        name: "Fatima Begum",
+        specialty: "Sozni Needlework",
+        experience: "28 Years of Experience",
+        bio: "\"My needle is an extension of my sight. Embroidering a single Pashmina shawl requires patience that modern machines cannot understand. Every paisley represents a season, a breeze, a prayer.\"",
+        image: "sn-art/assets/pashmina_shawl.png"
+    },
+    {
+        name: "Bashir Ahmad",
+        specialty: "Walnut Wood Carving",
+        experience: "39 Years of Experience",
+        bio: "\"Walnut wood is alive. It responds to the temperature, the moisture, and the pressure of the chisel. To carve a Chinar leaf is to freeze a moment of autumn in solid timber forever.\"",
+        image: "sn-art/assets/wood_carving.png"
+    },
+    {
+        name: "Mohammad Yousuf",
+        specialty: "Papier Mâché painting",
+        experience: "34 Years of Experience",
+        bio: "\"I mix mineral colors the way my ancestors did. Applying real gold leaf onto paper-pulp requires absolute stillness of breath. We paint the stories of the Mughal gardens in miniature motifs.\"",
+        image: "sn-art/assets/papier_mache.png"
+    }
+];
+
+// ==========================================================================
+// 3. Application State
+// ==========================================================================
+let cart = JSON.parse(localStorage.getItem("sn_cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("sn_wishlist")) || [];
+let currentArtisanIndex = 0;
+
+// ==========================================================================
+// 4. Initializer & Event Listeners Binding
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    // Luxury Loader Trigger
+    initLoader();
+
+    // Mouse follow glow
+    initMouseGlow();
+
+    // Parallax background
+    initParallaxHero();
+
+    // Populate Grid
+    renderProducts("all");
+    updateBadges();
+    initScrollHeader();
+    initScrollSpy();
+    initRevealAnimations();
+    setupArtisanShowcase();
+    setupNewsletter();
+
+    // Testimonial slider
+    initTestimonialSlider();
+
+    // Animated counters
+    initAnimatedCounters();
+
+    // Setup Drawers & Modals
+    setupDrawerEvents("cartTrigger", "cartCloseBtn", "cartDrawer", "cartDrawerOverlay");
+    setupDrawerEvents("wishlistTrigger", "wishlistCloseBtn", "wishlistDrawer", "wishlistDrawerOverlay");
+    setupDrawerEvents("termsTrigger", "termsCloseBtn", "termsDrawer", "termsDrawerOverlay");
+    setupSearchEvents();
+    setupQuickViewEvents();
+
+    // Global keyboard: close any open drawer/modal with Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeAllDrawers();
+            document.getElementById("navMenu").classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
+
+    // Checkout Event
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+        alert("Thank you for your order! Your luxury commission has been registered. Our concierge will contact you shortly.");
+        cart = [];
+        saveCart();
+        updateBadges();
+        closeAllDrawers();
+    });
+
+    // Mobile Navigation Toggle
+    const mobileToggle = document.getElementById("mobileNavToggle");
+    const navMenu = document.getElementById("navMenu");
+    mobileToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = navMenu.classList.toggle("active");
+        document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+
+    // Close mobile nav when clicking a link
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+    });
+
+    // Close mobile nav when tapping outside the menu
+    document.addEventListener("click", (e) => {
+        if (
+            navMenu.classList.contains("active") &&
+            !navMenu.contains(e.target) &&
+            !mobileToggle.contains(e.target)
+        ) {
+            navMenu.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
+});
+
+// ==========================================================================
+// 5. Product Rendering & Grid Logic
+// ==========================================================================
+function renderProducts(filter = "all") {
+    const grid = document.getElementById("productGrid");
+    grid.innerHTML = "";
+
+    const filtered = filter === "all" ? products : products.filter(p => p.category === filter);
+
+    filtered.forEach(p => {
+        const isWishlisted = wishlist.includes(p.id);
+        const card = document.createElement("div");
+        
+        let badgeClass = '';
+        const badgeLower = p.badge.toLowerCase();
+        if (badgeLower.includes('gi')) badgeClass = 'gi';
+        else if (badgeLower.includes('artisan') || badgeLower.includes('handwoven')) badgeClass = 'artisan';
+        else if (badgeLower.includes('masterpiece') || badgeLower.includes('limited')) badgeClass = 'masterpiece';
+
+        card.className = `product-card reveal product-card-${badgeClass}`;
+
+        card.innerHTML = `
+            <div class="product-image-container">
+                <span class="product-badge ${badgeClass}">${p.badge}</span>
+                <img src="${p.image}" alt="${p.name}" loading="lazy" onclick="openQuickView('${p.id}')" style="cursor: pointer;">
+                
+                <button class="wishlist-heart-btn absolute-heart ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist('${p.id}', this)" aria-label="Add to Wishlist">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+                
+                <button class="quick-view-overlay-btn" onclick="openQuickView('${p.id}')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    Quick View
+                </button>
+
+                <button class="add-to-cart-slide-btn" onclick="addToCart('${p.id}')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                    </svg>
+                    Add to Cart
+                </button>
+            </div>
+            <div class="product-info">
+                <span class="product-cat">${p.categoryName}</span>
+                <h3 class="product-name">${p.name}</h3>
+                <div class="product-rating">
+                    ${getStarString(p.rating)}
+                    <span class="product-reviews-count">(${p.reviews} reviews)</span>
+                </div>
+                <div class="product-price-row">
+                    <span class="product-price">₹${p.price.toLocaleString("en-IN")}</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    // Re-initialize animations for new elements
+    setTimeout(() => {
+        const revealItems = grid.querySelectorAll(".reveal");
+        revealItems.forEach(el => el.classList.add("reveal-active"));
+    }, 50);
+}
+
+function getStarString(rating) {
+    let stars = "";
+    for (let i = 0; i < 5; i++) {
+        stars += i < Math.floor(rating) ? "★" : "☆";
+    }
+    return stars;
+}
+
+function filterProducts(category) {
+    // Update active tab styling
+    document.querySelectorAll(".filter-tab").forEach(tab => {
+        if (tab.getAttribute("data-filter") === category) {
+            tab.classList.add("active");
+        } else {
+            tab.classList.remove("active");
+        }
+    });
+
+    // Bring the catalogue into view when triggered from elsewhere on the page
+    // (category cards, footer links). Skip if it's already comfortably in view.
+    const section = document.getElementById("featuredProducts");
+    if (section) {
+        const rect = section.getBoundingClientRect();
+        const headerOffset = 90;
+        if (rect.top > window.innerHeight * 0.5 || rect.bottom < headerOffset) {
+            const targetY = window.scrollY + rect.top - headerOffset;
+            window.scrollTo({ top: targetY, behavior: "smooth" });
+        }
+    }
+
+    // Smooth transition
+    const grid = document.getElementById("productGrid");
+    grid.style.opacity = "0";
+    grid.style.transform = "translateY(10px)";
+    grid.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+
+    setTimeout(() => {
+        renderProducts(category);
+        grid.style.opacity = "1";
+        grid.style.transform = "translateY(0)";
+    }, 300);
+}
+
+// ==========================================================================
+// 6. Shopping Cart Drawer Logic
+// ==========================================================================
+function addToCart(productId) {
+    const existing = cart.find(item => item.id === productId);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ id: productId, quantity: 1 });
+    }
+    saveCart();
+    updateBadges();
+    renderCart();
+    openDrawer("cartDrawer", "cartDrawerOverlay");
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    updateBadges();
+    renderCart();
+}
+
+function changeQty(productId, amount) {
+    const item = cart.find(i => i.id === productId);
+    if (!item) return;
+
+    item.quantity += amount;
+    if (item.quantity <= 0) {
+        removeFromCart(productId);
+    } else {
+        saveCart();
+        updateBadges();
+        renderCart();
+    }
+}
+
+function renderCart() {
+    const list = document.getElementById("cartItemsList");
+    const emptyState = document.getElementById("cartEmptyState");
+    const footer = document.getElementById("cartDrawerFooter");
+    
+    list.innerHTML = "";
+
+    if (cart.length === 0) {
+        emptyState.style.display = "flex";
+        footer.style.display = "none";
+        return;
+    }
+
+    emptyState.style.display = "none";
+    footer.style.display = "block";
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        const prod = products.find(p => p.id === item.id);
+        if (!prod) return;
+
+        const itemTotal = prod.price * item.quantity;
+        subtotal += itemTotal;
+
+        const el = document.createElement("div");
+        el.className = "cart-item";
+        el.innerHTML = `
+            <img src="${prod.image}" alt="${prod.name}" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-name">${prod.name}</h4>
+                <div class="cart-item-price">₹${prod.price.toLocaleString("en-IN")}</div>
+                <div class="cart-item-qty-control">
+                    <button class="qty-btn" onclick="changeQty('${item.id}', -1)" aria-label="Decrease quantity">-</button>
+                    <span class="qty-val">${item.quantity}</span>
+                    <button class="qty-btn" onclick="changeQty('${item.id}', 1)" aria-label="Increase quantity">+</button>
+                </div>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" aria-label="Remove item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                </svg>
+            </button>
+        `;
+        list.appendChild(el);
+    });
+
+    document.getElementById("cartSubtotal").innerText = `₹${subtotal.toLocaleString("en-IN")}`;
+    document.getElementById("cartTotal").innerText = `₹${subtotal.toLocaleString("en-IN")}`;
+}
+
+function saveCart() {
+    localStorage.setItem("sn_cart", JSON.stringify(cart));
+}
+
+// ==========================================================================
+// 7. Wishlist Drawer Logic
+// ==========================================================================
+function toggleWishlist(productId, btnEl = null) {
+    const index = wishlist.indexOf(productId);
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        if (btnEl) {
+            btnEl.classList.remove("active");
+            btnEl.querySelector("svg").setAttribute("fill", "none");
+        }
+    } else {
+        wishlist.push(productId);
+        if (btnEl) {
+            btnEl.classList.add("active");
+            btnEl.querySelector("svg").setAttribute("fill", "currentColor");
+        }
+    }
+    saveWishlist();
+    updateBadges();
+    renderWishlist();
+}
+
+function removeWishlist(productId) {
+    wishlist = wishlist.filter(id => id !== productId);
+    saveWishlist();
+    updateBadges();
+    renderWishlist();
+    renderProducts(document.querySelector(".filter-tab.active")?.getAttribute("data-filter") || "all");
+}
+
+function renderWishlist() {
+    const list = document.getElementById("wishlistItemsList");
+    const emptyState = document.getElementById("wishlistEmptyState");
+    
+    list.innerHTML = "";
+
+    if (wishlist.length === 0) {
+        emptyState.style.display = "flex";
+        return;
+    }
+
+    emptyState.style.display = "none";
+
+    wishlist.forEach(id => {
+        const prod = products.find(p => p.id === id);
+        if (!prod) return;
+
+        const el = document.createElement("div");
+        el.className = "cart-item";
+        el.innerHTML = `
+            <img src="${prod.image}" alt="${prod.name}" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-name">${prod.name}</h4>
+                <div class="cart-item-price">₹${prod.price.toLocaleString("en-IN")}</div>
+                <button class="btn btn-primary btn-sm" onclick="addToCart('${prod.id}')" style="margin-top: 5px;">Move to Cart</button>
+            </div>
+            <button class="cart-item-remove" onclick="removeWishlist('${prod.id}')" aria-label="Remove item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+            </button>
+        `;
+        list.appendChild(el);
+    });
+}
+
+function saveWishlist() {
+    localStorage.setItem("sn_wishlist", JSON.stringify(wishlist));
+}
+
+// Update badges in header
+function updateBadges() {
+    const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+    const wishlistCount = wishlist.length;
+
+    document.getElementById("cartBadge").innerText = cartCount;
+    document.getElementById("wishlistBadge").innerText = wishlistCount;
+}
+
+// Drawer overlay controls
+function setupDrawerEvents(triggerId, closeId, drawerId, overlayId) {
+    const trigger = document.getElementById(triggerId);
+    const close = document.getElementById(closeId);
+    const drawer = document.getElementById(drawerId);
+    const overlay = document.getElementById(overlayId);
+
+    trigger.addEventListener("click", () => {
+        if (drawerId === "cartDrawer") renderCart();
+        if (drawerId === "wishlistDrawer") renderWishlist();
+        openDrawer(drawerId, overlayId);
+    });
+
+    close.addEventListener("click", () => closeDrawer(drawerId, overlayId));
+    overlay.addEventListener("click", () => closeDrawer(drawerId, overlayId));
+}
+
+function openDrawer(drawerId, overlayId) {
+    document.getElementById(drawerId).classList.add("active");
+    document.getElementById(overlayId).classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeDrawer(drawerId, overlayId) {
+    document.getElementById(drawerId).classList.remove("active");
+    document.getElementById(overlayId).classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+function closeAllDrawers() {
+    document.querySelectorAll(".drawer, .drawer-overlay, .quick-view-modal, .quick-view-overlay, .search-modal").forEach(el => {
+        el.classList.remove("active");
+    });
+    document.body.style.overflow = "";
+}
+
+// ==========================================================================
+// 8. Search Overlay Modal Logic
+// ==========================================================================
+function setupSearchEvents() {
+    const trigger = document.getElementById("searchTrigger");
+    const close = document.getElementById("searchCloseBtn");
+    const modal = document.getElementById("searchModal");
+    const input = document.getElementById("searchInput");
+
+    trigger.addEventListener("click", () => {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+        setTimeout(() => input.focus(), 300);
+    });
+
+    close.addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+        input.value = "";
+        document.getElementById("searchResultsList").innerHTML = "";
+        document.getElementById("searchResultsHeader").style.display = "none";
+    });
+
+    input.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const resultsList = document.getElementById("searchResultsList");
+        const resultsHeader = document.getElementById("searchResultsHeader");
+
+        if (query === "") {
+            resultsList.innerHTML = "";
+            resultsHeader.style.display = "none";
+            return;
+        }
+
+        const matches = products.filter(p => 
+            p.name.toLowerCase().includes(query) || 
+            p.details.toLowerCase().includes(query) || 
+            p.categoryName.toLowerCase().includes(query)
+        );
+
+        resultsList.innerHTML = "";
+        resultsHeader.style.display = "block";
+
+        if (matches.length === 0) {
+            resultsList.innerHTML = `<p style="padding: 1rem; color: var(--color-muted);">No products found matching '${query}'</p>`;
+            return;
+        }
+
+        matches.forEach(p => {
+            const el = document.createElement("div");
+            el.className = "cart-item";
+            el.style.cursor = "pointer";
+            el.innerHTML = `
+                <img src="${p.image}" alt="${p.name}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <h4 class="cart-item-name">${p.name}</h4>
+                    <div class="cart-item-price">₹${p.price.toLocaleString("en-IN")}</div>
+                </div>
+            `;
+            el.addEventListener("click", () => {
+                modal.classList.remove("active");
+                input.value = "";
+                openQuickView(p.id);
+            });
+            resultsList.appendChild(el);
+        });
+    });
+}
+
+function fillSearch(val) {
+    const input = document.getElementById("searchInput");
+    input.value = val;
+    input.dispatchEvent(new Event("input"));
+}
+
+// ==========================================================================
+// 9. Product Quick View Details Modal
+// ==========================================================================
+function setupQuickViewEvents() {
+    const close = document.getElementById("quickViewCloseBtn");
+    const overlay = document.getElementById("quickViewOverlay");
+
+    close.addEventListener("click", () => {
+        document.getElementById("quickViewModal").classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+
+    overlay.addEventListener("click", () => {
+        document.getElementById("quickViewModal").classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+}
+
+function openQuickView(productId) {
+    const prod = products.find(p => p.id === productId);
+    if (!prod) return;
+
+    const content = document.getElementById("quickViewContent");
+    const isWishlisted = wishlist.includes(prod.id);
+
+    content.innerHTML = `
+        <div class="qv-image-side">
+            <img src="${prod.image}" alt="${prod.name}">
+        </div>
+        <div class="qv-info-side">
+            <span class="qv-cat">${prod.categoryName}</span>
+            <h2 class="qv-title" id="quickViewTitle">${prod.name}</h2>
+            <div class="qv-rating-row">
+                <span style="color: var(--color-gold); font-size: 1.1rem;">${getStarString(prod.rating)}</span>
+                <span style="font-size: 0.85rem; color: var(--color-muted);">(${prod.reviews} reviews)</span>
+            </div>
+            <div class="qv-price">₹${prod.price.toLocaleString("en-IN")}</div>
+            <p class="qv-desc">${prod.details}</p>
+            <ul class="qv-meta-bullets">
+                <li><strong>Dimensions:</strong> ${prod.dimensions}</li>
+                <li><strong>Material:</strong> ${prod.material}</li>
+                <li><strong>Origin:</strong> ${prod.origin}</li>
+            </ul>
+            <div class="qv-actions-row">
+                <button class="btn btn-primary" onclick="addToCartAndClose('${prod.id}')">Add to Collection</button>
+                <button class="qv-wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlistAndRedraw('${prod.id}', this)" aria-label="Add to Wishlist">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById("quickViewModal").classList.add("active");
+    document.getElementById("quickViewOverlay").classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function addToCartAndClose(productId) {
+    addToCart(productId);
+    document.getElementById("quickViewModal").classList.remove("active");
+    document.getElementById("quickViewOverlay").classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+function toggleWishlistAndRedraw(productId, btnEl) {
+    toggleWishlist(productId);
+    const isActive = wishlist.includes(productId);
+    if (isActive) {
+        btnEl.classList.add("active");
+        btnEl.querySelector("svg").setAttribute("fill", "currentColor");
+    } else {
+        btnEl.classList.remove("active");
+        btnEl.querySelector("svg").setAttribute("fill", "none");
+    }
+    // Re-render product grid in background
+    renderProducts(document.querySelector(".filter-tab.active")?.getAttribute("data-filter") || "all");
+}
+
+// ==========================================================================
+// 10. Artisan Heritage Carousel Showcase
+// ==========================================================================
+function setupArtisanShowcase() {
+    const prev = document.getElementById("artisanPrev");
+    const next = document.getElementById("artisanNext");
+
+    if (!prev || !next) return;
+
+    prev.addEventListener("click", () => navigateArtisan(-1));
+    next.addEventListener("click", () => navigateArtisan(1));
+}
+
+function navigateArtisan(dir) {
+    currentArtisanIndex += dir;
+    if (currentArtisanIndex < 0) {
+        currentArtisanIndex = artisans.length - 1;
+    } else if (currentArtisanIndex >= artisans.length) {
+        currentArtisanIndex = 0;
+    }
+
+    const data = artisans[currentArtisanIndex];
+    const imgEl = document.getElementById("artisanImg");
+    const specialtyEl = document.getElementById("artisanSpecialty");
+    const experienceEl = document.getElementById("artisanYears");
+    const nameEl = document.getElementById("artisanName");
+    const bioEl = document.getElementById("artisanBio");
+    const indicatorEl = document.getElementById("artisanIndicator");
+
+    // Fade animation trigger
+    const container = document.querySelector(".artisan-showcase");
+    container.style.opacity = "0.5";
+    container.style.transform = "scale(0.99)";
+    container.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+
+    setTimeout(() => {
+        imgEl.src = data.image;
+        specialtyEl.innerText = data.specialty;
+        experienceEl.innerText = data.experience;
+        nameEl.innerText = data.name;
+        bioEl.innerText = data.bio;
+        indicatorEl.innerText = `${currentArtisanIndex + 1} / ${artisans.length}`;
+
+        container.style.opacity = "1";
+        container.style.transform = "scale(1)";
+    }, 400);
+}
+
+// ==========================================================================
+// 11. Reveal-on-Scroll Effects
+// ==========================================================================
+function initRevealAnimations() {
+    const reveals = document.querySelectorAll(".reveal, .reveal-fade-up, .reveal-scale-in, .reveal-slide-left, .reveal-slide-right");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal-active");
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    reveals.forEach(r => observer.observe(r));
+}
+
+// ==========================================================================
+// 12. Sticky Nav Header Transition
+// ==========================================================================
+function initScrollHeader() {
+    const header = document.getElementById("mainHeader");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+}
+
+function initScrollSpy() {
+    const sections = document.querySelectorAll("section[id], footer[id]");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        const scrollPosition = window.scrollY + 120; // offset for sticky navbar
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            const href = link.getAttribute("href");
+            if (href === `#${current}` || (current === "" && href === "#")) {
+                link.classList.add("active");
+            }
+        });
+    });
+}
+
+// ==========================================================================
+// 13. Newsletter Form Handling
+// ==========================================================================
+function setupNewsletter() {
+    const form = document.getElementById("newsletterForm");
+    const success = document.getElementById("newsletterSuccess");
+
+    if (!form) return;
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        // Simulating loading state
+        const btn = form.querySelector("button");
+        const originalText = btn.innerText;
+        btn.innerText = "Dispatching...";
+        btn.disabled = true;
+
+        setTimeout(() => {
+            form.style.display = "none";
+            success.style.display = "flex";
+            success.style.opacity = "0";
+            success.style.transition = "opacity 0.5s ease";
+            setTimeout(() => {
+                success.style.opacity = "1";
+            }, 50);
+        }, 1500);
+    });
+}
+
+// ==========================================================================
+// 14. Luxury Loader Animation
+// ==========================================================================
+function initLoader() {
+    const loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    
+    // Hide loader after a smooth delay
+    setTimeout(() => {
+        loader.classList.add("fade-out");
+    }, 1500);
+}
+
+// ==========================================================================
+// 15. Mouse Follow Glow Element
+// ==========================================================================
+function initMouseGlow() {
+    const glow = document.getElementById("mouseGlow");
+    if (!glow) return;
+
+    document.addEventListener("mousemove", (e) => {
+        // Use translate3d to offload rendering to the GPU for butter-smooth movement
+        glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate3d(-50%, -50%, 0)`;
+        glow.style.opacity = "1";
+    });
+
+    document.addEventListener("mouseleave", () => {
+        glow.style.opacity = "0";
+    });
+}
+
+// ==========================================================================
+// 16. Hero Parallax Effect
+// ==========================================================================
+function initParallaxHero() {
+    const videoBg = document.querySelector(".hero-video-bg");
+    const container = document.querySelector(".hero-container");
+    if (!videoBg || !container) return;
+
+    window.addEventListener("scroll", () => {
+        const scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) {
+            // Translate background video slower than scroll speed
+            videoBg.style.transform = `translate3d(0, ${scrolled * 0.35}px, 0)`;
+            // Slide container down slightly for depth
+            container.style.transform = `translate3d(0, ${scrolled * 0.18}px, 0)`;
+        }
+    });
+}
+
+// ==========================================================================
+// 17. Animated Stat Counters
+// ==========================================================================
+function initAnimatedCounters() {
+    const counters = document.querySelectorAll(".counter");
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute("data-target"), 10);
+                let count = 0;
+                const duration = 2000; // Animation duration in ms
+                const stepTime = 20; // Step update interval in ms
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        counter.innerText = target.toLocaleString("en-IN");
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.floor(count).toLocaleString("en-IN");
+                    }
+                }, stepTime);
+                
+                observer.unobserve(counter);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    counters.forEach(c => observer.observe(c));
+}
+
+// ==========================================================================
+// 18. Testimonial Slider Carousel
+// ==========================================================================
+function initTestimonialSlider() {
+    const track = document.getElementById("testimonialTrack");
+    const prevBtn = document.getElementById("testimonialPrev");
+    const nextBtn = document.getElementById("testimonialNext");
+    const dotsContainer = document.getElementById("testimonialDots");
+    const slides = document.querySelectorAll(".testimonial-slide");
+
+    if (!track || slides.length === 0) return;
+
+    let index = 0;
+    let autoSlideInterval;
+
+    // Create dot indicators
+    slides.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.className = `slider-dot ${i === 0 ? 'active' : ''}`;
+        dot.addEventListener("click", () => {
+            index = i;
+            updateSlider();
+            resetAutoSlide();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".slider-dot");
+
+    function updateSlider() {
+        track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
+        dots.forEach((dot, i) => {
+            if (i === index) dot.classList.add("active");
+            else dot.classList.remove("active");
+        });
+    }
+
+    function nextSlide() {
+        index = index < slides.length - 1 ? index + 1 : 0;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        index = index > 0 ? index - 1 : slides.length - 1;
+        updateSlider();
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000); // Auto-scroll every 5 seconds
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    prevBtn.addEventListener("click", () => {
+        prevSlide();
+        resetAutoSlide();
+    });
+
+    nextBtn.addEventListener("click", () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+
+    // Start auto play initially
+    startAutoSlide();
+}
+
+</script>
+</body>
+</html>
+

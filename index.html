@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SN ART – Kashmir Artisan Crafts | Authentic Handmade Luxury</title>
+    <meta name="description" content="Discover SN ART, a premium heritage catalog of authentic Kashmiri crafts. Shop authentic Handwoven Tokri Baskets, Papier Mâché, Pashmina Shawls, and Walnut Wood Carvings certified by master artisans.">
+    <!-- Meta tags for SEO -->
+    <meta name="keywords" content="Kashmiri crafts, Pashmina Shawls, Papier Mache, Walnut Wood Carvings, Tokri Baskets, Kashmir Heritage, Handmade Luxury, GI-tagged crafts">
+    <meta name="author" content="SN ART">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SN ART – Kashmir Artisan Crafts">
+    <meta property="og:description" content="Shop authentic, GI-tagged Kashmiri crafts direct from master artisans. Experience the heritage of Pashmina, Papier Mâché, Tokri baskets, and Wood Carvings.">
+    <meta property="og:image" content="assets/hero_artisan.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (inline SVG: gold 'S' monogram on dark walnut) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233D2B1A'/%3E%3Ctext x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23D4A843'%3ES%3C/text%3E%3C/svg%3E">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Luxury Page Loader -->
+    <div class="luxury-loader" id="pageLoader">
+        <div class="loader-content">
+            <span class="loader-logo">SN<span class="logo-accent">ART</span></span>
+            <span class="loader-tag">Kashmir Artisan Crafts</span>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Follow Glow -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="announcement-bar-track">
+            <span>Free Shipping on Orders Above ₹2,500 • Authentic GI-Tagged Crafts • Artisan Certified • Direct from the Valley</span>
+            <span>Free Shipping on Orders Above ₹2,500 • Authentic GI-Tagged Crafts • Artisan Certified • Direct from the Valley</span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="main-header" id="mainHeader">
+        <div class="nav-container">
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="brand-logo">
+                <span class="logo-title">SN<span class="logo-accent">ART</span></span>
+                <span class="logo-subtitle">Kashmir Artisan Crafts</span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#browseCraft" class="nav-link">Collections</a></li>
+                    <li><a href="#featuredProducts" class="nav-link">Shop</a></li>
+                    <li><a href="#heritageStory" class="nav-link">Heritage</a></li>
+                    <li><a href="#artisanHeritage" class="nav-link">Our Artisans</a></li>
+                    <li><a href="#whatsappInquiry" class="nav-link">Customize</a></li>
+                    <li><a href="#footer" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Action Icons -->
+            <div class="nav-actions">
+                <button class="action-btn" id="searchTrigger" aria-label="Search Catalog">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <button class="action-btn" id="wishlistTrigger" aria-label="View Wishlist">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="action-badge" id="wishlistBadge">0</span>
+                </button>
+                <button class="action-btn" id="cartTrigger" aria-label="View Shopping Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="action-badge" id="cartBadge">0</span>
+                </button>
+                <a href="#newsletter" class="action-btn profile-btn-desktop" aria-label="Join Club">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Video -->
+    <section class="hero-section">
+        <div class="hero-video-container">
+            <video autoplay loop muted playsinline class="hero-video-bg">
+                <source src="assets/woven_basket_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-scroll-indicator">
+                <span>Scroll to Discover</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-top: 4px;">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content reveal">
+                <span class="hero-subtitle-tag">Authentic Kashmiri Crafts • Handcrafted Since 1967</span>
+                <h1 class="hero-title">The Soul of Kashmir <br><span class="italic-garamond">In Your Hands</span></h1>
+                <p class="hero-description">
+                    Celebrate generations of exquisite Kashmiri craftsmanship. Discover hand-painted lacquer papier-mâché, fine hand-loomed Pashmina wool, and intricately carved walnut woodwork, created by master artisans keeping heritage alive.
+                </p>
+                <div class="hero-actions">
+                    <a href="#featuredProducts" class="btn btn-primary">Explore Collection</a>
+                    <a href="#editorialGallery" class="btn btn-secondary">View Gallery</a>
+                </div>
+                <!-- Hero Statistics -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number"><span class="counter" data-target="340">0</span>+</span>
+                        <span class="stat-label">Master Artisans</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number"><span class="counter" data-target="18">0</span></span>
+                        <span class="stat-label">Craft Traditions</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number"><span class="counter" data-target="52000">0</span>+</span>
+                        <span class="stat-label">Customers</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artisan Story Preview Card -->
+            <div class="artisan-preview-card reveal">
+                <div class="ap-avatar">
+                    <img src="assets/hero_artisan.png" alt="Ghulam Nabi">
+                </div>
+                <div class="ap-info">
+                    <span class="ap-label">Featured Artisan</span>
+                    <h4 class="ap-name">Ghulam Nabi</h4>
+                    <p class="ap-quote">"Weaving is a conversation with the willow stalks..."</p>
+                    <a href="#artisanHeritage" class="ap-link">Read Narrative ➔</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-indicators section-spacing">
+        <div class="container">
+            <div class="trust-grid">
+                <!-- 1. GI Tag Certified -->
+                <div class="trust-card reveal-fade-up">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🏷 GI Tag Certified</h3>
+                    <p class="trust-text">Authentic origin-certified Kashmiri luxury verifying authentic handmade heritage.</p>
+                </div>
+                <!-- 2. Free Shipping -->
+                <div class="trust-card reveal-fade-up reveal-delay-1">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="1" y="3" width="15" height="13"></rect>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🚚 Free Shipping</h3>
+                    <p class="trust-text">Complimentary secure shipping across India on all orders exceeding ₹2,500.</p>
+                </div>
+                <!-- 3. Artisan Direct -->
+                <div class="trust-card reveal-fade-up reveal-delay-2">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path>
+                            <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+                            <circle cx="12" cy="10" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🤝 Artisan Direct</h3>
+                    <p class="trust-text">Sourced directly from the families of weavers, woodcarvers, and painting masters.</p>
+                </div>
+                <!-- 4. Secure Payments -->
+                <div class="trust-card reveal-fade-up reveal-delay-3">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="trust-title">🔒 Secure Payments</h3>
+                    <p class="trust-text">SSL-encrypted checkout supporting cards, UPI, and net banking safely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Masterpiece Gallery Section (Scroll down to see the images) -->
+    <section class="editorial-gallery-section section-spacing" id="editorialGallery">
+        <div class="container">
+            <div class="section-header text-center reveal-fade-up">
+                <span class="section-subtitle">Visualizing the Heritage</span>
+                <h2 class="section-title">The Artisan Gallery</h2>
+                <div class="header-divider"></div>
+            </div>
+            
+            <div class="gallery-grid reveal-scale-in">
+                <!-- Item 1: Ghulam Nabi's Artisan Workshop -->
+                <div class="grid-item item-main">
+                    <img src="assets/hero_artisan.png" alt="Kashmiri artisan weaving Tokri basket" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Artisan Workshop</span>
+                        <span class="gallery-item-size">Srinagar, Kashmir</span>
+                    </div>
+                </div>
+                <!-- Item 2: Kashmiri Willow Tokri -->
+                <div class="grid-item item-sec-1">
+                    <img src="assets/tokri_basket.png" alt="Handwoven Tokri basket" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Kashmiri Willow Tokri</span>
+                        <span class="gallery-item-size">Real Size: 16" x 12" x 9"</span>
+                    </div>
+                </div>
+                <!-- Item 3: Walnut Wood Jewelry Box -->
+                <div class="grid-item item-sec-2">
+                    <img src="assets/walnut_wood_box.png" alt="Hand-carved Kashmiri Walnut Wood Box" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Walnut Wood Box</span>
+                        <span class="gallery-item-size">Real Size: 8" x 6" x 4"</span>
+                    </div>
+                </div>
+                <!-- Item 4: Papier Mâché Vase -->
+                <div class="grid-item item-sec-3">
+                    <img src="assets/papier_mache.png" alt="Kashmiri Papier Mache Urn" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Papier Mâché Art</span>
+                        <span class="gallery-item-size">Real Size: 12" H x 6" D</span>
+                    </div>
+                </div>
+                <!-- Item 5: Heirloom Pashmina Shawl -->
+                <div class="grid-item item-sec-4">
+                    <img src="assets/pashmina_shawl.png" alt="Intricate Pashmina Shawl" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Pashmina & Kani</span>
+                        <span class="gallery-item-size">Real Size: 80" x 40"</span>
+                    </div>
+                </div>
+                <!-- Item 6: Namda Felted Rug -->
+                <div class="grid-item item-sec-5">
+                    <img src="assets/namda_wool_rug.png" alt="Chain-stitch Felted Namda Rug" loading="lazy">
+                    <div class="grid-overlay">
+                        <span class="gallery-item-title">Namda Felted Rug</span>
+                        <span class="gallery-item-size">Real Size: 6' x 4'</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Heritage Marquee -->
+    <section class="marquee-divider">
+        <div class="marquee-content">
+            <div class="marquee-slide">
+                <span>Handwoven Tokri</span> <span class="bullet">✦</span>
+                <span>Papier Mâché</span> <span class="bullet">✦</span>
+                <span>Pashmina & Kani</span> <span class="bullet">✦</span>
+                <span>Khatamband Art</span> <span class="bullet">✦</span>
+                <span>Walnut Carving</span> <span class="bullet">✦</span>
+                <span>Namda Rugs</span> <span class="bullet">✦</span>
+                <span>Sozni Embroidery</span> <span class="bullet">✦</span>
+                <span>Chain Stitch Craft</span> <span class="bullet">✦</span>
+            </div>
+            <div class="marquee-slide">
+                <span>Handwoven Tokri</span> <span class="bullet">✦</span>
+                <span>Papier Mâché</span> <span class="bullet">✦</span>
+                <span>Pashmina & Kani</span> <span class="bullet">✦</span>
+                <span>Khatamband Art</span> <span class="bullet">✦</span>
+                <span>Walnut Carving</span> <span class="bullet">✦</span>
+                <span>Namda Rugs</span> <span class="bullet">✦</span>
+                <span>Sozni Embroidery</span> <span class="bullet">✦</span>
+                <span>Chain Stitch Craft</span> <span class="bullet">✦</span>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Browse By Craft (Categories) -->
+    <section class="browse-craft section-spacing" id="browseCraft">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-subtitle">Exquisite Heritage Traditions</span>
+                <h2 class="section-title">Browse By Craft</h2>
+                <div class="header-divider"></div>
+            </div>
+            
+            <div class="category-grid">
+                <!-- Category 1: Kashmiri Tokri -->
+                <div class="category-card reveal-slide-left" data-category="tokri">
+                    <div class="category-image">
+                        <img src="assets/tokri_basket.png" alt="Kashmiri Willow Tokri Basket" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Kashmiri Tokri Baskets</h3>
+                        <p class="category-card-desc">Handwoven willow basketry, combining rustic utility with elegant geometric patterns refined over centuries.</p>
+                        <button class="category-btn" onclick="filterProducts('tokri')">Explore Craft</button>
+                    </div>
+                </div>
+
+                <!-- Category 2: Papier Mache -->
+                <div class="category-card reveal-slide-right" data-category="papier_mache">
+                    <div class="category-image">
+                        <img src="assets/papier_mache.png" alt="Kashmiri Papier Mache Urn" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Papier Mâché Artifacts</h3>
+                        <p class="category-card-desc">Intricately painted paper-pulp artifacts finished with lacquer, gold leaf, and miniature motifs.</p>
+                        <button class="category-btn" onclick="filterProducts('papier_mache')">Explore Craft</button>
+                    </div>
+                </div>
+
+                <!-- Category 3: Pashmina & Kani -->
+                <div class="category-card reveal-slide-left reveal-delay-1" data-category="pashmina">
+                    <div class="category-image">
+                        <img src="assets/pashmina_shawl.png" alt="Paisley Pashmina Stole" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Pashmina & Kani Shawls</h3>
+                        <p class="category-card-desc">Whisper-soft heirloom shawls spun from Changthangi goat wool, featuring elaborate needlework.</p>
+                        <button class="category-btn" onclick="filterProducts('pashmina')">Explore Craft</button>
+                    </div>
+                </div>
+
+                <!-- Category 4: Walnut Wood & Khatamband -->
+                <div class="category-card reveal-slide-right reveal-delay-1" data-category="wood_carving">
+                    <div class="category-image">
+                        <img src="assets/wood_carving.png" alt="Walnut Wood Chinar Plaque" loading="lazy">
+                        <div class="category-pattern-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-card-title">Wood Carving & Khatamband</h3>
+                        <p class="category-card-desc">Hand-carved seasoned walnut wood representing intricate foliage and interlocking geometric ceiling panels.</p>
+                        <button class="category-btn" onclick="filterProducts('wood_carving')">Explore Craft</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Featured Products -->
+    <section class="featured-products section-spacing" id="featuredProducts">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Museum Grade Catalogue</span>
+                <div class="header-flex">
+                    <h2 class="section-title">Featured Creations</h2>
+                    <!-- Category Filtering Tabs -->
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')">All Masterpieces</button>
+                        <button class="filter-tab" data-filter="tokri" onclick="filterProducts('tokri')">Baskets</button>
+                        <button class="filter-tab" data-filter="papier_mache" onclick="filterProducts('papier_mache')">Papier Mâché</button>
+                        <button class="filter-tab" data-filter="pashmina" onclick="filterProducts('pashmina')">Pashmina</button>
+                        <button class="filter-tab" data-filter="wood_carving" onclick="filterProducts('wood_carving')">Walnut Wood</button>
+                    </div>
+                </div>
+                <div class="header-divider"></div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be generated dynamically by JavaScript to facilitate wishlist, cart, filtering, and quick view -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Heritage Story Section -->
+    <section class="heritage-story-section reveal" id="heritageStory">
+        <div class="story-background-decor"></div>
+        <div class="story-container">
+            <div class="story-image">
+                <img src="assets/dal_lake_scenic.png" alt="Sunset over Dal Lake Srinagar" loading="lazy">
+                <div class="story-quote-card">
+                    <span class="quote-mark">“</span>
+                    <p class="quote-text">If there is a heaven on earth, it's here, it's here, it's here.</p>
+                    <span class="quote-author">— Emperor Jehangir</span>
+                </div>
+            </div>
+            <div class="story-content">
+                <span class="story-subtitle">Crafting History Since 1967</span>
+                <h2 class="story-title">Where Every Thread Carries <br>The Spirit Of Kashmir</h2>
+                <div class="story-divider"></div>
+                <p class="story-paragraph">
+                    SN ART was born out of a deep reverence for the architectural lines, lake reflections, and historical artisan lanes of Srinagar. Our mission is to bridge the gap between generational master craftsmen and discerning patrons of luxury across the globe.
+                </p>
+                <p class="story-paragraph">
+                    Each creation in our catalogue is catalogued with its unique artisan lineage and GI certification (Geographical Indication). By bringing a piece of SN ART into your home, you support the preservation of ancient skills, ensuring these rich craft forms flourish for generations to come.
+                </p>
+                <div class="story-signature">
+                    <div class="sig-name">SN ART Heritage Guild</div>
+                    <div class="sig-title">Srinagar, Jammu & Kashmir</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Artisan Heritage Section -->
+    <section class="artisan-heritage section-spacing" id="artisanHeritage">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-subtitle">Meet Our Masters</span>
+                <h2 class="section-title">The Heart of the Craft</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <!-- Custom Editorial Layout for Artisans -->
+            <div class="artisan-carousel-container reveal">
+                <div class="artisan-showcase">
+                    <div class="artisan-photo-side">
+                        <img src="assets/hero_artisan.png" alt="Ghulam Nabi, Master Weaver" id="artisanImg">
+                    </div>
+                    <div class="artisan-info-side">
+                        <div class="artisan-meta">
+                            <span class="artisan-badge" id="artisanSpecialty">Tokri Weaving</span>
+                            <span class="artisan-experience" id="artisanYears">45 Years of Experience</span>
+                        </div>
+                        <h3 class="artisan-name" id="artisanName">Ghulam Nabi</h3>
+                        <p class="artisan-bio" id="artisanBio">
+                            "Weaving is not just work; it is a conversation with the willow stalks. Each bend and knot is a decision passed down through my grandfather. We keep the soul of the wetlands alive in every basket we finish."
+                        </p>
+                        <div class="artisan-nav">
+                            <button class="artisan-nav-btn prev" id="artisanPrev" aria-label="Previous Artisan">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </button>
+                            <span class="artisan-indicator" id="artisanIndicator">1 / 4</span>
+                            <button class="artisan-nav-btn next" id="artisanNext" aria-label="Next Artisan">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div> <!-- artisan-info-side -->
+                </div> <!-- artisan-showcase -->
+            </div> <!-- artisan-carousel-container -->
+        </div> <!-- container -->
+    </section>
+
+    <!-- Kani Divider Line -->
+    <div class="kani-border-line"></div>
+
+    <!-- Testimonials (Interactive Slider) -->
+    <section class="testimonials-section section-spacing">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-subtitle">Patron Reflections</span>
+                <h2 class="section-title">Voices of Appreciation</h2>
+                <div class="header-divider"></div>
+            </div>
+
+            <div class="testimonials-slider-container reveal">
+                <div class="testimonials-track" id="testimonialTrack">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">
+                                "The Paisley Pashmina Stole is a masterpiece. It literally feels like a whisper against the skin, and the intricacy of the Sozni work is breathtaking. It arrived in an elegant cedar box with a certificate signed by the artisan. Highly recommended!"
+                            </p>
+                            <div class="patron-info">
+                                <div class="patron-avatar">A</div>
+                                <div>
+                                    <h4 class="patron-name">Ananya Iyer</h4>
+                                    <span class="patron-location">Mumbai, Maharashtra</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">
+                                "The Walnut Wood Chinar panel adds a rich rustic soul to our living room. You can smell the walnut oil, and the details of the leaves are incredible. SN ART brings museum-grade authenticity to your doorstep."
+                            </p>
+                            <div class="patron-info">
+                                <div class="patron-avatar">R</div>
+                                <div>
+                                    <h4 class="patron-name">Rajesh Khatri</h4>
+                                    <span class="patron-location">New Delhi, NCR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">★★★★★</div>
+                            <p class="testimonial-text">
+                                "I purchased the Handwoven Oval Market Basket. It is structurally solid yet incredibly lightweight. Knowing the name of the artisan, Ghulam Nabi, who crafted it over 12 hours makes it so special. Truly ethical luxury."
+                            </p>
+                            <div class="patron-info">
+                                <div class="patron-avatar">S</div>
+                                <div>
+                                    <h4 class="patron-name">Sushma Sen</h4>
+                                    <span class="patron-location">Bengaluru, Karnataka</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Control Bar -->
+                <div class="slider-controls">
+                    <button class="slider-nav-btn prev" id="testimonialPrev" aria-label="Previous Testimonial">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <div class="slider-dots" id="testimonialDots"></div>
+                    <button class="slider-nav-btn next" id="testimonialNext" aria-label="Next Testimonial">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="container">
+            <div class="newsletter-container reveal">
+                <span class="newsletter-sub">Stories From The Valley</span>
+                <h2 class="newsletter-title">Subscribe to the Heritage Chronicle</h2>
+                <p class="newsletter-text">
+                    Join our inner circle. Receive monthly dispatches on artisan stories, behind-the-scenes craft videos, historical perspectives, and priority access to limited custom collections.
+                </p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required aria-label="Email Address">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <div id="newsletterSuccess" class="newsletter-success">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Welcome to SN ART. Your invitation has been dispatched.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Col 1: Brand Story -->
+                <div class="footer-col brand-col">
+                    <a href="#" class="brand-logo footer-logo">
+                        <span class="logo-title">SN<span class="logo-accent">ART</span></span>
+                        <span class="logo-subtitle">Kashmir Artisan Crafts</span>
+                    </a>
+                    <p class="footer-desc">
+                        SN ART is an editorial design house and heritage craft collective dedicated to preserving and promoting authentic Kashmiri craftsmanship globally. Certified GI-Tag items sourced directly.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Pinterest">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <line x1="4" y1="9" x2="20" y2="9"></line>
+                                <line x1="4" y1="15" x2="20" y2="15"></line>
+                                <line x1="10" y1="3" x2="10" y2="21"></line>
+                                <line x1="14" y1="3" x2="14" y2="21"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Collections -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Collections</h4>
+                    <ul>
+                        <li><a href="#featuredProducts" onclick="filterProducts('tokri')">Kashmiri Tokri Baskets</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('papier_mache')">Papier Mâché Art</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('pashmina')">Pashmina & Kani Shawls</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('wood_carving')">Walnut Wood Panels</a></li>
+                        <li><a href="#featuredProducts" onclick="filterProducts('all')">Custom Orders</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Company -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Our House</h4>
+                    <ul>
+                        <li><a href="#heritageStory">Our Narrative</a></li>
+                        <li><a href="#artisanHeritage">Artisan Guild</a></li>
+                        <li><a href="#">GI-Tag Verification</a></li>
+                        <li><a href="#">Sustainable Growth</a></li>
+                        <li><a href="#">Press Editorial</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Support -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Assistance</h4>
+                    <ul>
+                        <li><a href="#">Secure Checkout</a></li>
+                        <li><a href="#">Shipping & Insurance</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Care Guides</a></li>
+                        <li><a href="#footer">Contact Concierge</a></li>
+                        <li><a href="javascript:void(0)" id="termsTrigger">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 5: Contact Info -->
+                <div class="footer-col contact-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <p class="contact-item">
+                        <strong>Studio:</strong> Lal Chowk, Srinagar, Jammu & Kashmir 190001
+                    </p>
+                    <p class="contact-item">
+                        <strong>Support:</strong> concierge@snart.in
+                    </p>
+                    <p class="contact-item">
+                        <strong>Telephone:</strong> +91 (194) 247-8900
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 SN ART Kashmir. All Rights Reserved. Crafted with reverence.</p>
+                <div class="payment-methods">
+                    <span>UPI</span>
+                    <span>Visa</span>
+                    <span>Mastercard</span>
+                    <span>Amex</span>
+                    <span>NetBanking</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Side Drawers & Overlays -->
+
+    <!-- Shopping Cart Drawer -->
+    <div class="drawer-overlay" id="cartDrawerOverlay"></div>
+    <div class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+        <div class="drawer-header">
+            <h3 id="cartDrawerTitle">Shopping Cart</h3>
+            <button class="drawer-close-btn" id="cartCloseBtn" aria-label="Close Cart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div id="cartEmptyState" class="empty-state">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="empty-icon">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <p>Your luxury collection is currently empty.</p>
+                <a href="#featuredProducts" class="btn btn-primary btn-sm" id="cartShopNow">Begin Exploring</a>
+            </div>
+            <div id="cartItemsList" class="cart-items-list">
+                <!-- Cart items generated by JavaScript -->
+            </div>
+        </div>
+        <div class="drawer-footer" id="cartDrawerFooter" style="display: none;">
+            <div class="cart-subtotal-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <div class="cart-shipping-row">
+                <span>Shipping</span>
+                <span id="cartShipping">FREE</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Estimated Total</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+            <p class="drawer-footer-note">Complimentary shipping & insurance included.</p>
+        </div>
+    </div>
+
+    <!-- Wishlist Drawer -->
+    <div class="drawer-overlay" id="wishlistDrawerOverlay"></div>
+    <div class="drawer" id="wishlistDrawer" role="dialog" aria-modal="true" aria-labelledby="wishlistDrawerTitle">
+        <div class="drawer-header">
+            <h3 id="wishlistDrawerTitle">Wishlist</h3>
+            <button class="drawer-close-btn" id="wishlistCloseBtn" aria-label="Close Wishlist">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div id="wishlistEmptyState" class="empty-state">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="empty-icon">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <p>No masterpieces saved to your wishlist yet.</p>
+                <a href="#featuredProducts" class="btn btn-primary btn-sm" id="wishlistShopNow">Add Creations</a>
+            </div>
+            <div id="wishlistItemsList" class="wishlist-items-list">
+                <!-- Wishlist items generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay Modal -->
+    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search Catalog">
+        <div class="search-modal-container">
+            <div class="search-modal-header">
+                <div class="search-input-wrapper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="search-icon">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search for Pashmina, Tokri, Walnut wood..." autocomplete="off">
+                </div>
+                <button class="search-close-btn" id="searchCloseBtn" aria-label="Close Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-modal-body">
+                <div class="search-suggestions" id="searchSuggestions">
+                    <h4>Suggested Collections</h4>
+                    <div class="suggestion-tags">
+                        <button onclick="fillSearch('Pashmina')">Pashmina Shawl</button>
+                        <button onclick="fillSearch('Tokri')">Tokri Basket</button>
+                        <button onclick="fillSearch('Chinar')">Chinar Wood Carving</button>
+                        <button onclick="fillSearch('Vase')">Papier Mâché Vase</button>
+                    </div>
+                </div>
+                <div class="search-results-wrapper">
+                    <h4 id="searchResultsHeader" style="display: none;">Search Results</h4>
+                    <div class="search-results-list" id="searchResultsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="quick-view-overlay" id="quickViewOverlay"></div>
+    <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle">
+        <button class="qv-close-btn" id="quickViewCloseBtn" aria-label="Close Details">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="quick-view-grid" id="quickViewContent">
+            <!-- Rendered by JavaScript dynamically -->
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal Drawer -->
+    <div class="drawer-overlay" id="termsDrawerOverlay"></div>
+    <div class="drawer" id="termsDrawer" role="dialog" aria-modal="true" aria-labelledby="termsDrawerTitle">
+        <div class="drawer-header">
+            <h3 id="termsDrawerTitle">Terms & Conditions</h3>
+            <button class="drawer-close-btn" id="termsCloseBtn" aria-label="Close Terms">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body terms-body">
+            <p class="terms-intro">Welcome to SN ART. By exploring our catalog and placing inquiries or orders, you agree to follow the terms below, which are designed to support and protect our community of master artisans in Jammu & Kashmir.</p>
+            
+            <div class="terms-section">
+                <h4>1. Artisan Craft & Authenticity</h4>
+                <p>SN ART guarantees that all catalog items are authentic, certified products sourced directly from local Kashmiri artisan families. Items labeled with "GI-Tagged" are certified Geographical Indications verifying authentic regional heritage.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h4>2. Handmade Variations</h4>
+                <p>Because our creations—including hand-spun Pashmina shawls, lacquer papier-mâché, hand-carved walnut wood, and willow tokri baskets—are entirely made by hand using traditional looms and chisels, minor variations in pattern, texture, size, and coloring are natural. These differences are not flaws, but rather the unique signature of individual craftsmanship.</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>3. Custom Orders & Commissions</h4>
+                <p>Custom commissions (such as personalized wood carvings, special shawl weaving codes, or size modifications) require a 50% advance deposit. Once production begins, custom commissions cannot be cancelled or refunded, as raw materials are explicitly acquired for the artisan's labor.</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>4. Shipping, Transit & Insurance</h4>
+                <p>We provide secure shipping across India, with free shipping on orders above ₹2,500. Due to the handcrafted nature and intensive labor of some products, delivery timelines may vary. All high-value shipments include full transit insurance coverage.</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>5. Returns & Handcrafted Care</h4>
+                <p>Standard items can be returned or exchanged within 14 days of delivery, provided they are in their original, unused condition. Customers are responsible for reviewing and adhering to the specific care guides provided (e.g. strict dry clean instructions for Pashmina wool, avoiding dry heat/moisture for walnut wood).</p>
+            </div>
+
+            <div class="terms-section">
+                <h4>6. Governing Law & Jurisdiction</h4>
+                <p>These terms and conditions are governed by the laws of India. Any legal disputes or claims arising out of transactions with SN ART shall be subject to the exclusive jurisdiction of the courts of Srinagar, Jammu & Kashmir.</p>
+            </div>
+
+            <p class="terms-footer-note">For custom requirements or support, contact our concierge desk at concierge@snart.in.</p>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Integration -->
+    <a href="https://wa.me/911942478900?text=I%20am%20interested%20in%20discussing%20a%20custom%20Kashmiri%20artisan%20commission%20with%20SN%20ART." class="whatsapp-float" id="whatsappInquiry" target="_blank" rel="noopener noreferrer" aria-label="Inquire on WhatsApp">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.13-1.347a9.945 9.945 0 004.887 1.277h.005c5.505 0 9.988-4.478 9.99-9.985A9.972 9.972 0 0012.012 2zm5.72 13.1c-.244.688-1.201 1.249-1.648 1.286-.445.037-.887.218-2.88-.574-2.548-1.01-4.154-3.578-4.282-3.748-.127-.17-1.026-1.365-1.026-2.599 0-1.233.637-1.84.892-2.105.255-.265.552-.332.736-.332.184 0 .368.002.529.01.17.008.397-.065.622.48.243.588.823 2.01.894 2.152.07.141.117.306.02.494-.095.188-.142.306-.283.47l-.282.33c-.142.164-.296.34-.127.63.169.29.749 1.232 1.606 1.994.814.723 1.498.948 1.71.135.213-.813.468-1.077.71-1.077.241 0 .482.113.68.225.198.113 1.249.588 1.462.695.213.106.354.16.406.25.052.09.052.522-.192 1.21z"/>
+        </svg>
+        <span class="whatsapp-label">Artisan Commission</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="index.js"></script>
+</body>
+</html>
