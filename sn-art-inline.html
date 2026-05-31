@@ -74,12 +74,17 @@ html {
     font-size: 16px;
     background-color: var(--color-bg-page);
     color: var(--color-text-dark);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
     font-family: var(--font-body);
     font-weight: 400;
     line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     background-color: var(--color-bg-page);
@@ -3139,6 +3144,119 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* ==========================================================================
+   GLOBAL RESPONSIVE & ANTI-OVERFLOW SAFETY NET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    max-width: 100%;
+}
+
+img,
+video,
+svg,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-video-bg {
+    height: 100%;
+    max-width: none;
+    width: 100%;
+}
+
+@media (hover: none), (max-width: 1024px) {
+    .mouse-glow {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .trust-grid,
+    .product-grid,
+    .category-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-container,
+    .story-container,
+    .artisan-showcase,
+    .quick-view-grid,
+    .category-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .product-card,
+    .category-card,
+    .trust-card,
+    .grid-item,
+    .testimonial-card,
+    .hero-content,
+    .artisan-preview-card,
+    .newsletter-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .whatsapp-float {
+        right: 14px;
+        bottom: 16px;
+        padding: 0.7rem 1rem;
+    }
+    .whatsapp-label {
+        display: none;
+    }
+    .nav-container {
+        gap: 0.4rem;
+    }
+}
+
+@media (max-width: 375px) {
+    html {
+        font-size: 15px;
+    }
+    .hero-actions .btn {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        letter-spacing: 0.08em;
+    }
+}
+
+@media (max-width: 320px) {
+    html {
+        font-size: 14px;
+    }
+    .container {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+    .logo-subtitle {
+        display: none;
+    }
+    .stat-number {
+        font-size: 1.8rem;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -3231,7 +3349,8 @@ button {
     <!-- Hero Section with Background Video -->
     <section class="hero-section">
         <div class="hero-video-container">
-            <video autoplay loop muted playsinline class="hero-video-bg">
+            <video autoplay loop muted playsinline class="hero-video-bg" poster="sn-art/assets/dal_lake_scenic.png">
+                <source src="sn-art/assets/hero_orchard.mp4" type="video/mp4">
                 <source src="sn-art/assets/woven_basket_video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
