@@ -1,15 +1,13 @@
 // ==========================================================================
 // SN ART — Admin Panel logic
-// Firebase modular SDK (v10) loaded from CDN. Phone-auth login + Firestore CRUD.
+// Firebase Firestore CRUD + a simple demo login (fixed phone + OTP).
+//
+// NOTE: This uses a DEMO login (no real SMS / Firebase Auth) as requested:
+//   Phone: +91 91030 76776   OTP: 076776
+// Anyone who knows these can sign in. The product data is protected only by
+// your Firestore rules. For a real store, switch back to Firebase phone auth.
 // ==========================================================================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-    getAuth,
-    RecaptchaVerifier,
-    signInWithPhoneNumber,
-    signOut,
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
     getFirestore,
     collection,
@@ -30,16 +28,22 @@ import {
     getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-import { firebaseConfig, PRODUCTS_COLLECTION, ADMINS_COLLECTION } from "./firebase-config.js";
+import { firebaseConfig, PRODUCTS_COLLECTION } from "./firebase-config.js";
 
 // --------------------------------------------------------------------------
 // Init
 // --------------------------------------------------------------------------
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
-auth.languageCode = "en";
+
+// --------------------------------------------------------------------------
+// DEMO login credentials (no SMS, no Firebase Auth)
+// --------------------------------------------------------------------------
+const DEMO_PHONE = "+919103076776";          // accepted phone (spaces ignored)
+const DEMO_PHONE_DIGITS = "919103076776";    // normalised form
+const DEMO_OTP = "076776";                   // accepted code
+const SESSION_KEY = "sn_admin_session";       // localStorage flag for "logged in"
 
 // --------------------------------------------------------------------------
 // Category label map (keeps storefront + admin consistent)
@@ -101,8 +105,6 @@ const els = {
 // --------------------------------------------------------------------------
 // State
 // --------------------------------------------------------------------------
-let confirmationResult = null;   // phone-auth confirmation handle
-let recaptchaVerifier = null;
 let productsCache = [];          // latest snapshot of products
 let unsubscribeProducts = null;  // Firestore listener cleanup
 let pendingDeleteId = null;
@@ -127,137 +129,74 @@ function showAuthStep(step) {
 }
 
 // --------------------------------------------------------------------------
-// reCAPTCHA (required by Firebase phone auth)
 // --------------------------------------------------------------------------
-function ensureRecaptcha() {
-    if (recaptchaVerifier) return recaptchaVerifier;
-    recaptchaVerifier = new RecaptchaVerifier(auth, "recaptchaContainer", {
-        size: "normal",
-        callback: () => setAuthError("")
-    });
-    recaptchaVerifier.render();
-    return recaptchaVerifier;
+// DEMO authentication flow (fixed phone + fixed OTP, no SMS)
+// --------------------------------------------------------------------------
+function normalisePhone(input) {
+    // Strip everything except digits; drop a leading 0 if present.
+    return (input || "").replace(/\D/g, "").replace(/^0+/, "");
 }
 
-function resetRecaptcha() {
-    if (recaptchaVerifier) {
-        try { recaptchaVerifier.clear(); } catch (_) {}
-        recaptchaVerifier = null;
-    }
-    $("recaptchaContainer").innerHTML = "";
-}
-
-// --------------------------------------------------------------------------
-// Phone authentication flow
-// --------------------------------------------------------------------------
-async function handleSendCode() {
-    const phone = els.phoneInput.value.trim();
+function handleSendCode() {
+    const entered = normalisePhone(els.phoneInput.value);
     setAuthError("");
-    if (!/^\+\d{8,15}$/.test(phone)) {
-        setAuthError("Enter the number in international format, e.g. +919876543210");
+
+    // Accept the demo number with or without country code (e.g. 9103076776)
+    const ok = entered === DEMO_PHONE_DIGITS || entered === "9103076776";
+    if (!ok) {
+        setAuthError("This number is not registered. Use the SN ART admin number.");
         return;
     }
-    els.sendCodeBtn.disabled = true;
-    els.sendCodeBtn.textContent = "Sending…";
-    try {
-        const verifier = ensureRecaptcha();
-        confirmationResult = await signInWithPhoneNumber(auth, phone, verifier);
-        els.otpPhoneLabel.textContent = phone;
-        showAuthStep("otp");
-        els.otpInput.focus();
-    } catch (err) {
-        console.error(err);
-        setAuthError(friendlyAuthError(err));
-        resetRecaptcha();
-    } finally {
-        els.sendCodeBtn.disabled = false;
-        els.sendCodeBtn.textContent = "Send Code";
-    }
+
+    els.otpPhoneLabel.textContent = DEMO_PHONE;
+    showAuthStep("otp");
+    els.otpInput.value = "";
+    els.otpInput.focus();
 }
 
-async function handleVerifyCode() {
+function handleVerifyCode() {
     const code = els.otpInput.value.trim();
     setAuthError("");
-    if (!/^\d{6}$/.test(code)) {
-        setAuthError("Enter the 6-digit code.");
+    if (code !== DEMO_OTP) {
+        setAuthError("Incorrect code. Please try again.");
         return;
     }
-    if (!confirmationResult) {
-        setAuthError("Session expired. Please request a new code.");
-        showAuthStep("phone");
-        return;
-    }
-    els.verifyCodeBtn.disabled = true;
-    els.verifyCodeBtn.textContent = "Verifying…";
-    try {
-        await confirmationResult.confirm(code);
-        // onAuthStateChanged handles the rest (admin check + dashboard)
-    } catch (err) {
-        console.error(err);
-        setAuthError(friendlyAuthError(err));
-    } finally {
-        els.verifyCodeBtn.disabled = false;
-        els.verifyCodeBtn.textContent = "Verify & Sign In";
-    }
+    // Mark session and open the dashboard
+    try { localStorage.setItem(SESSION_KEY, DEMO_PHONE); } catch (_) {}
+    openDashboard();
 }
 
-function friendlyAuthError(err) {
-    const code = (err && err.code) || "";
-    const map = {
-        "auth/invalid-phone-number": "That phone number looks invalid. Use international format like +91…",
-        "auth/missing-phone-number": "Please enter a phone number.",
-        "auth/quota-exceeded": "SMS quota exceeded. Try again later.",
-        "auth/too-many-requests": "Too many attempts. Please wait a while and try again.",
-        "auth/invalid-verification-code": "Incorrect code. Please check and try again.",
-        "auth/code-expired": "That code expired. Request a new one.",
-        "auth/captcha-check-failed": "reCAPTCHA failed. Reload the page and try again.",
-        "auth/operation-not-allowed": "Phone sign-in isn't enabled in Firebase. Enable it under Authentication › Sign-in method."
-    };
-    return map[code] || ("Authentication error: " + (err.message || code || "unknown"));
+function signOutAdmin() {
+    try { localStorage.removeItem(SESSION_KEY); } catch (_) {}
+    teardownDashboard();
+    els.dashView.classList.add("hidden");
+    els.authView.classList.remove("hidden");
+    els.phoneInput.value = "";
+    els.otpInput.value = "";
+    setAuthError("");
+    showAuthStep("phone");
 }
 
-// --------------------------------------------------------------------------
-// Admin authorisation check
-// --------------------------------------------------------------------------
-async function isAuthorisedAdmin(uid) {
-    try {
-        const snap = await getDoc(doc(db, ADMINS_COLLECTION, uid));
-        return snap.exists();
-    } catch (err) {
-        console.error("Admin check failed:", err);
-        return false;
-    }
-}
-
-// --------------------------------------------------------------------------
-// Auth state listener — single source of truth for which view shows
-// --------------------------------------------------------------------------
-onAuthStateChanged(auth, async (user) => {
-    if (!user) {
-        teardownDashboard();
-        els.dashView.classList.add("hidden");
-        els.authView.classList.remove("hidden");
-        showAuthStep("phone");
-        return;
-    }
-
-    const allowed = await isAuthorisedAdmin(user.uid);
-    if (!allowed) {
-        teardownDashboard();
-        els.dashView.classList.add("hidden");
-        els.authView.classList.remove("hidden");
-        els.deniedUid.textContent = user.uid;
-        showAuthStep("denied");
-        return;
-    }
-
-    // Authorised — open dashboard
+function openDashboard() {
     setAuthError("");
     els.authView.classList.add("hidden");
     els.dashView.classList.remove("hidden");
-    els.adminWho.textContent = user.phoneNumber || "Admin";
+    els.adminWho.textContent = DEMO_PHONE;
     startProductsListener();
-});
+}
+
+// On load: if a demo session exists, go straight to the dashboard.
+function initAuthState() {
+    let session = null;
+    try { session = localStorage.getItem(SESSION_KEY); } catch (_) {}
+    if (session) {
+        openDashboard();
+    } else {
+        els.dashView.classList.add("hidden");
+        els.authView.classList.remove("hidden");
+        showAuthStep("phone");
+    }
+}
 
 // --------------------------------------------------------------------------
 // Real-time products listener
@@ -555,15 +494,13 @@ els.phoneInput.addEventListener("keydown", (e) => { if (e.key === "Enter") handl
 els.otpInput.addEventListener("keydown", (e) => { if (e.key === "Enter") handleVerifyCode(); });
 
 els.changePhoneBtn.addEventListener("click", () => {
-    confirmationResult = null;
     els.otpInput.value = "";
     setAuthError("");
-    resetRecaptcha();
     showAuthStep("phone");
 });
 
-els.deniedSignOutBtn.addEventListener("click", () => signOut(auth));
-els.signOutBtn.addEventListener("click", () => signOut(auth));
+els.deniedSignOutBtn.addEventListener("click", signOutAdmin);
+els.signOutBtn.addEventListener("click", signOutAdmin);
 
 els.addProductBtn.addEventListener("click", () => openProductModal(null));
 els.modalCloseBtn.addEventListener("click", closeProductModal);
@@ -583,3 +520,8 @@ document.addEventListener("keydown", (e) => {
         els.deleteModal.classList.add("hidden");
     }
 });
+
+// --------------------------------------------------------------------------
+// Boot
+// --------------------------------------------------------------------------
+initAuthState();

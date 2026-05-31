@@ -149,14 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mouse follow glow
     initMouseGlow();
 
-    // Parallax background
-    initParallaxHero();
-
     // Populate Grid
     renderProducts("all");
     updateBadges();
-    initScrollHeader();
-    initScrollSpy();
+    initUnifiedScroll();   // header + scroll-spy + parallax in one rAF loop
     initRevealAnimations();
     setupArtisanShowcase();
     setupNewsletter();
@@ -188,8 +184,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Checkout Event — sends the order to SN ART via WhatsApp
-    document.getElementById("checkoutBtn").addEventListener("click", checkoutViaWhatsApp);
+    // Checkout Event — opens the in-cart payment step
+    document.getElementById("checkoutBtn").addEventListener("click", showPaymentStep);
+
+    // Payment step controls
+    document.getElementById("paymentBackBtn").addEventListener("click", hidePaymentStep);
+    document.getElementById("payWhatsappBtn").addEventListener("click", checkoutViaWhatsApp);
+    document.querySelectorAll(".pay-option").forEach(btn => {
+        btn.addEventListener("click", () => payWithProvider(btn.getAttribute("data-pay")));
+    });
 
     // Mobile Navigation Toggle
     const mobileToggle = document.getElementById("mobileNavToggle");
@@ -375,7 +378,14 @@ function renderCart() {
     const list = document.getElementById("cartItemsList");
     const emptyState = document.getElementById("cartEmptyState");
     const footer = document.getElementById("cartDrawerFooter");
-    
+
+    // Always return to the cart view (not the payment step) when re-rendering
+    const paymentStep = document.getElementById("paymentStep");
+    if (paymentStep) paymentStep.style.display = "none";
+    list.style.display = "";
+    const title = document.getElementById("cartDrawerTitle");
+    if (title) title.textContent = "Shopping Cart";
+
     list.innerHTML = "";
 
     if (cart.length === 0) {
@@ -445,8 +455,82 @@ window.snLoadProducts = function (liveProducts) {
     if (typeof renderWishlist === "function") renderWishlist();
 };
 
-// SN ART WhatsApp business number (used for checkout + inquiries)
+// SN ART WhatsApp business number (used for optional order confirmation)
 const SN_WHATSAPP = "919103076776";
+
+// ==========================================================================
+// PAYMENT CONFIGURATION
+// --------------------------------------------------------------------------
+// Replace the `link` values below with your real payment URLs/intents when you
+// integrate a gateway (Razorpay/Cashfree page, UPI deep link, payment link,
+// etc.). The amount (in ₹) is available as the `amount` argument so you can
+// build dynamic links. Leave a link empty ("") to keep it as a "coming soon"
+// stub that shows a friendly message instead of navigating.
+//
+// Example (UPI deep link):
+//   gpay: (amount) => `tez://upi/pay?pa=yourvpa@bank&pn=SN%20ART&am=${amount}&cu=INR`
+// Example (hosted payment link):
+//   upi:  (amount) => `https://your-payment-link?amount=${amount}`
+// ==========================================================================
+const PAYMENT_PROVIDERS = {
+    gpay:    { label: "Google Pay", link: (amount) => "" },
+    phonepe: { label: "PhonePe",    link: (amount) => "" },
+    paytm:   { label: "Paytm UPI",  link: (amount) => "" },
+    upi:     { label: "Any UPI App",link: (amount) => "" }
+};
+
+// Compute the current cart subtotal (₹).
+function cartSubtotal() {
+    return cart.reduce((sum, item) => {
+        const prod = products.find(p => p.id === item.id);
+        return prod ? sum + prod.price * item.quantity : sum;
+    }, 0);
+}
+
+// ---- Payment step inside the cart drawer ----
+function showPaymentStep() {
+    if (cart.length === 0) { showCartToast("Your cart is empty."); return; }
+    const total = cartSubtotal();
+    document.getElementById("payAmount").textContent = "₹" + total.toLocaleString("en-IN");
+    document.getElementById("cartItemsList").style.display = "none";
+    document.getElementById("cartEmptyState").style.display = "none";
+    document.getElementById("cartDrawerFooter").style.display = "none";
+    document.getElementById("paymentStep").style.display = "block";
+    document.getElementById("cartDrawerTitle").textContent = "Payment";
+}
+
+function hidePaymentStep() {
+    document.getElementById("paymentStep").style.display = "none";
+    document.getElementById("cartItemsList").style.display = "";
+    document.getElementById("cartDrawerFooter").style.display = "block";
+    document.getElementById("cartDrawerTitle").textContent = "Shopping Cart";
+}
+
+// Handle a payment provider selection.
+// If a real link is configured for the provider it navigates there;
+// otherwise it shows a friendly "coming soon" message (so the UI is fully
+// functional and ready for you to plug in payment links later).
+function payWithProvider(method) {
+    const total = cartSubtotal();
+    if (total <= 0) { showCartToast("Your cart is empty."); return; }
+
+    const provider = PAYMENT_PROVIDERS[method];
+    if (!provider) return;
+
+    const link = (provider.link && provider.link(total)) || "";
+    if (link) {
+        // Real payment link configured — open it.
+        if (link.startsWith("upi://") || link.startsWith("tez://") ||
+            link.startsWith("phonepe://") || link.startsWith("paytmmp://")) {
+            window.location.href = link; // UPI app intent
+        } else {
+            window.open(link, "_blank", "noopener,noreferrer"); // hosted page
+        }
+    } else {
+        // No link yet — graceful placeholder.
+        showCartToast(`${provider.label} payment will be available soon.`);
+    }
+}
 
 // Build an order summary and open WhatsApp with the details pre-filled.
 function checkoutViaWhatsApp() {
@@ -846,41 +930,78 @@ function initRevealAnimations() {
 // ==========================================================================
 // 12. Sticky Nav Header Transition
 // ==========================================================================
-function initScrollHeader() {
+// ==========================================================================
+// 12. Unified scroll handler (header + scroll-spy + parallax) — rAF throttled
+// One scroll listener feeding a single requestAnimationFrame loop avoids the
+// jank/glitches caused by multiple synchronous scroll handlers.
+// ==========================================================================
+function initUnifiedScroll() {
     const header = document.getElementById("mainHeader");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
+    const navLinks = Array.from(document.querySelectorAll(".nav-menu a"));
+    const heroContainer = document.querySelector(".hero-container");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Cache section offsets; refresh on resize (avoids layout reads each scroll)
+    let sections = [];
+    function cacheSections() {
+        sections = Array.from(document.querySelectorAll("section[id], footer[id]")).map(s => ({
+            id: s.getAttribute("id"),
+            top: s.offsetTop,
+            height: s.offsetHeight
+        }));
+    }
+    cacheSections();
+    window.addEventListener("resize", debounce(cacheSections, 200));
+
+    let ticking = false;
+    let lastActive = "";
+
+    function onScroll() {
+        const y = window.scrollY;
+
+        // 1. Header solid state
+        if (y > 50) header.classList.add("scrolled");
+        else header.classList.remove("scrolled");
+
+        // 2. Parallax (container only — never the video, so Ken Burns is untouched)
+        if (!reduceMotion && heroContainer && y < window.innerHeight) {
+            heroContainer.style.transform = `translate3d(0, ${y * 0.15}px, 0)`;
         }
-    });
+
+        // 3. Scroll-spy (active nav link)
+        const pos = y + 120;
+        let current = "";
+        for (const s of sections) {
+            if (pos >= s.top && pos < s.top + s.height) { current = s.id; break; }
+        }
+        if (current !== lastActive) {
+            lastActive = current;
+            navLinks.forEach(link => {
+                const href = link.getAttribute("href");
+                link.classList.toggle("active", href === `#${current}` || (current === "" && href === "#"));
+            });
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(onScroll);
+        }
+    }, { passive: true });
+
+    onScroll(); // initial
 }
 
-function initScrollSpy() {
-    const sections = document.querySelectorAll("section[id], footer[id]");
-    const navLinks = document.querySelectorAll(".nav-menu a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        const scrollPosition = window.scrollY + 120; // offset for sticky navbar
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            const href = link.getAttribute("href");
-            if (href === `#${current}` || (current === "" && href === "#")) {
-                link.classList.add("active");
-            }
-        });
-    });
+// Small debounce helper
+function debounce(fn, wait) {
+    let t;
+    return function (...args) {
+        clearTimeout(t);
+        t = setTimeout(() => fn.apply(this, args), wait);
+    };
 }
 
 // ==========================================================================
@@ -933,11 +1054,23 @@ function initMouseGlow() {
     const glow = document.getElementById("mouseGlow");
     if (!glow) return;
 
+    // Skip entirely on touch / coarse pointers (no cursor to follow)
+    if (window.matchMedia("(hover: none)").matches) return;
+
+    let mx = 0, my = 0, ticking = false;
+
     document.addEventListener("mousemove", (e) => {
-        // Use translate3d to offload rendering to the GPU for butter-smooth movement
-        glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate3d(-50%, -50%, 0)`;
-        glow.style.opacity = "1";
-    });
+        mx = e.clientX;
+        my = e.clientY;
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(() => {
+                glow.style.transform = `translate3d(${mx}px, ${my}px, 0) translate3d(-50%, -50%, 0)`;
+                glow.style.opacity = "1";
+                ticking = false;
+            });
+        }
+    }, { passive: true });
 
     document.addEventListener("mouseleave", () => {
         glow.style.opacity = "0";
@@ -945,23 +1078,9 @@ function initMouseGlow() {
 }
 
 // ==========================================================================
-// 16. Hero Parallax Effect
+// 16. Hero Parallax — now handled inside initUnifiedScroll (container only),
+// which avoids conflicting with the Ken Burns zoom on the video element.
 // ==========================================================================
-function initParallaxHero() {
-    const videoBg = document.querySelector(".hero-video-bg");
-    const container = document.querySelector(".hero-container");
-    if (!videoBg || !container) return;
-
-    window.addEventListener("scroll", () => {
-        const scrolled = window.scrollY;
-        if (scrolled < window.innerHeight) {
-            // Translate background video slower than scroll speed
-            videoBg.style.transform = `translate3d(0, ${scrolled * 0.35}px, 0)`;
-            // Slide container down slightly for depth
-            container.style.transform = `translate3d(0, ${scrolled * 0.18}px, 0)`;
-        }
-    });
-}
 
 // ==========================================================================
 // 17. Animated Stat Counters

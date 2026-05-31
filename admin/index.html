@@ -24,28 +24,26 @@
             <!-- Step 1: phone number -->
             <div class="auth-step" id="stepPhone">
                 <h2 class="auth-title">Sign in</h2>
-                <p class="auth-hint">Enter the admin phone number. We'll text you a one-time code.</p>
+                <p class="auth-hint">Enter the SN ART admin phone number to receive your code.</p>
                 <label class="field-label" for="phoneInput">Phone number</label>
-                <input type="tel" id="phoneInput" class="auth-input" placeholder="+91 98765 43210" autocomplete="tel">
-                <div id="recaptchaContainer" class="recaptcha-box"></div>
+                <input type="tel" id="phoneInput" class="auth-input" placeholder="+91 91030 76776" autocomplete="tel">
                 <button class="admin-btn admin-btn-primary block" id="sendCodeBtn">Send Code</button>
             </div>
 
             <!-- Step 2: OTP -->
             <div class="auth-step hidden" id="stepOtp">
                 <h2 class="auth-title">Verify</h2>
-                <p class="auth-hint">Enter the 6-digit code sent to <span id="otpPhoneLabel"></span>.</p>
+                <p class="auth-hint">Enter the 6-digit code for <span id="otpPhoneLabel"></span>.</p>
                 <label class="field-label" for="otpInput">Verification code</label>
-                <input type="text" id="otpInput" class="auth-input otp" placeholder="123456" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+                <input type="text" id="otpInput" class="auth-input otp" placeholder="••••••" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
                 <button class="admin-btn admin-btn-primary block" id="verifyCodeBtn">Verify &amp; Sign In</button>
                 <button class="admin-btn admin-btn-ghost block" id="changePhoneBtn">Use a different number</button>
             </div>
 
-            <!-- Access denied (signed in but not an admin) -->
+            <!-- (kept hidden; retained so JS refs never break) -->
             <div class="auth-step hidden" id="stepDenied">
-                <h2 class="auth-title">Access pending</h2>
-                <p class="auth-hint">This number is verified but not yet authorised as an admin.</p>
-                <p class="auth-hint">Add the User ID below to the <code>admins</code> collection in Firestore, then sign in again.</p>
+                <h2 class="auth-title">Access denied</h2>
+                <p class="auth-hint">This number is not authorised.</p>
                 <div class="uid-box" id="deniedUid">—</div>
                 <button class="admin-btn admin-btn-ghost block" id="deniedSignOutBtn">Sign out</button>
             </div>

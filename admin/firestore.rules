@@ -1,38 +1,34 @@
 rules_version = '2';
 
 // ==========================================================================
-// SN ART — Firestore Security Rules
+// SN ART — Firestore Security Rules  (DEMO MODE)
 //
 // Paste these into: Firebase Console > Firestore Database > Rules > Publish.
 //
-// Model:
-//   - Anyone may READ products (so the public storefront can list them).
-//   - Only signed-in users whose UID exists as a document in /admins
-//     may CREATE / UPDATE / DELETE products.
-//   - The /admins collection is NOT writable from the client. You add admin
-//     UIDs manually in the Firebase console (see admin/SETUP.md).
+// IMPORTANT — this configuration matches the DEMO admin login (fixed phone +
+// fixed OTP, no Firebase Authentication). Because the admin panel signs in
+// without Firebase Auth, these rules allow product reads AND writes from any
+// client. That means ANYONE who can reach your Firestore could modify the
+// products collection.
+//
+// This is acceptable for a demo / MVP. For a real production store you should:
+//   1. Restore Firebase phone authentication in admin/admin.js, and
+//   2. Replace the products write rule below with `if isAdmin()` (see the
+//      commented version), gating writes to signed-in admins only.
 // ==========================================================================
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // True when the requester is signed in AND listed as an admin.
-    function isAdmin() {
-      return request.auth != null
-        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
-    }
-
     // ---- Products ----
     match /products/{productId} {
-      allow read: if true;          // public catalogue
-      allow create, update, delete: if isAdmin();
+      allow read: if true;     // public catalogue
+      allow write: if true;    // DEMO: open writes (no auth). Lock down for production.
     }
 
-    // ---- Admins registry ----
-    // Admins can read the list (used by the panel to verify access),
-    // but nobody can modify it from the client — manage it in the console.
-    match /admins/{uid} {
-      allow read: if request.auth != null;
-      allow write: if false;
+    // ---- Orders (created by storefront checkout) ----
+    match /orders/{orderId} {
+      allow create: if true;   // customers can place orders
+      allow read, update, delete: if true; // DEMO: admin reads them in panel
     }
 
     // Deny everything else by default.
@@ -41,3 +37,16 @@ service cloud.firestore {
     }
   }
 }
+
+// --------------------------------------------------------------------------
+// PRODUCTION-HARDENED version (for later) — requires Firebase Auth + admins:
+//
+// function isAdmin() {
+//   return request.auth != null
+//     && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+// }
+// match /products/{productId} {
+//   allow read: if true;
+//   allow write: if isAdmin();
+// }
+// --------------------------------------------------------------------------

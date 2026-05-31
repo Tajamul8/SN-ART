@@ -3753,3 +3753,111 @@ footer,
 .sn-cart-toast.show {
     transform: translateX(-50%) translateY(0);
 }
+
+
+/* ==========================================================================
+   Cart → Payment step (UPI options)
+   ========================================================================== */
+.payment-step {
+    padding: 0.5rem 0;
+}
+.payment-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    color: var(--color-muted);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    margin-bottom: 1rem;
+    transition: color 0.2s ease;
+}
+.payment-back:hover { color: var(--color-saffron); }
+
+.payment-heading {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.4rem;
+}
+.payment-amount {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+}
+.payment-amount strong { color: var(--color-gold); font-size: 1.1rem; }
+
+.payment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+.pay-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.2rem 0.8rem;
+    background: var(--color-bg-card, #121212);
+    border: 1px solid var(--color-border, #2a2a2a);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pay-option:hover {
+    border-color: var(--color-saffron);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.pay-logo {
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+    color: #fff;
+    min-width: 64px;
+    text-align: center;
+}
+.pay-logo.gpay { background: linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335); }
+.pay-logo.phonepe { background: #5f259f; }
+.pay-logo.paytm { background: #00baf2; }
+.pay-logo.upi { background: linear-gradient(135deg,#ff7e00,#097939); }
+.pay-name {
+    font-size: 0.82rem;
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+
+.payment-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    margin: 1.2rem 0;
+}
+.payment-divider::before,
+.payment-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border, #2a2a2a);
+}
+.payment-divider span { padding: 0 0.8rem; }
+
+.payment-note {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+@media (max-width: 360px) {
+    .payment-options { grid-template-columns: 1fr; }
+}
