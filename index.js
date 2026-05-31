@@ -165,6 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Animated counters
     initAnimatedCounters();
 
+    // Premium effects
+    initLightbox();
+    initButtonRipples();
+    initMagneticButtons();
+
     // Setup Drawers & Modals
     setupDrawerEvents("cartTrigger", "cartCloseBtn", "cartDrawer", "cartDrawerOverlay");
     setupDrawerEvents("wishlistTrigger", "wishlistCloseBtn", "wishlistDrawer", "wishlistDrawerOverlay");
@@ -995,4 +1000,135 @@ function initTestimonialSlider() {
 
     // Start auto play initially
     startAutoSlide();
+}
+
+
+// ==========================================================================
+// 19. Lightbox Gallery Viewer
+// ==========================================================================
+function initLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    if (!lightbox) return;
+
+    const imgEl = document.getElementById("lightboxImg");
+    const captionEl = document.getElementById("lightboxCaption");
+    const closeBtn = document.getElementById("lightboxClose");
+    const prevBtn = document.getElementById("lightboxPrev");
+    const nextBtn = document.getElementById("lightboxNext");
+
+    // Collect gallery images
+    const items = Array.from(document.querySelectorAll(".gallery-grid .grid-item"));
+    const slides = items.map(item => {
+        const img = item.querySelector("img");
+        const title = item.querySelector(".gallery-item-title");
+        return {
+            src: img ? img.getAttribute("src") : "",
+            alt: img ? img.getAttribute("alt") : "",
+            caption: title ? title.textContent : ""
+        };
+    });
+
+    let current = 0;
+
+    function show(index) {
+        current = (index + slides.length) % slides.length;
+        const slide = slides[current];
+        imgEl.src = slide.src;
+        imgEl.alt = slide.alt;
+        captionEl.textContent = slide.caption;
+    }
+
+    function open(index) {
+        show(index);
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    items.forEach((item, i) => {
+        item.addEventListener("click", () => open(i));
+    });
+
+    closeBtn.addEventListener("click", close);
+    prevBtn.addEventListener("click", (e) => { e.stopPropagation(); show(current - 1); });
+    nextBtn.addEventListener("click", (e) => { e.stopPropagation(); show(current + 1); });
+
+    // Close on backdrop click
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) close();
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("active")) return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowLeft") show(current - 1);
+        if (e.key === "ArrowRight") show(current + 1);
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    lightbox.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener("touchend", (e) => {
+        const diff = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diff) > 50) {
+            show(diff > 0 ? current - 1 : current + 1);
+        }
+    }, { passive: true });
+}
+
+// ==========================================================================
+// 20. Button Ripple Effect
+// ==========================================================================
+function initButtonRipples() {
+    const buttons = document.querySelectorAll(".btn, .category-btn, .filter-tab");
+    buttons.forEach(btn => {
+        btn.addEventListener("click", function (e) {
+            const circle = document.createElement("span");
+            const diameter = Math.max(this.clientWidth, this.clientHeight);
+            const radius = diameter / 2;
+            const rect = this.getBoundingClientRect();
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${e.clientX - rect.left - radius}px`;
+            circle.style.top = `${e.clientY - rect.top - radius}px`;
+            circle.classList.add("ripple");
+
+            const existing = this.querySelector(".ripple");
+            if (existing) existing.remove();
+
+            this.appendChild(circle);
+            setTimeout(() => circle.remove(), 600);
+        });
+    });
+}
+
+// ==========================================================================
+// 21. Magnetic Buttons (desktop pointer only)
+// ==========================================================================
+function initMagneticButtons() {
+    // Skip on touch devices and when reduced motion is preferred
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    if (reduce || !fine) return;
+
+    const magnets = document.querySelectorAll(".btn-primary, .btn-secondary");
+    const strength = 0.35;
+
+    magnets.forEach(magnet => {
+        magnet.addEventListener("mousemove", (e) => {
+            const rect = magnet.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            magnet.style.transform = `translate3d(${x * strength}px, ${y * strength}px, 0)`;
+        });
+        magnet.addEventListener("mouseleave", () => {
+            magnet.style.transform = "translate3d(0, 0, 0)";
+        });
+    });
 }
