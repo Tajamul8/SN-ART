@@ -364,6 +364,30 @@ body {
 }
 .img-preview.show { display: block; }
 
+/* Image upload control */
+.upload-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+}
+.upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    background: var(--bg-elev);
+    border: 1px dashed var(--saffron);
+    border-radius: 6px;
+    color: var(--gold);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.upload-btn:hover { background: rgba(200,136,42,0.1); }
+.upload-hint { font-size: 0.78rem; color: var(--muted); }
+
 .form-error, .auth-error { color: #ff8a7a; font-size: 0.85rem; }
 .form-error { margin: 1rem 0 0; min-height: 1em; }
 .confirm-text { color: var(--text); font-size: 0.95rem; margin-bottom: 1.5rem; }

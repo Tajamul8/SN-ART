@@ -23,6 +23,12 @@ import {
     orderBy,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+    getStorage,
+    ref as storageRef,
+    uploadBytes,
+    getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 import { firebaseConfig, PRODUCTS_COLLECTION, ADMINS_COLLECTION } from "./firebase-config.js";
 
@@ -32,6 +38,7 @@ import { firebaseConfig, PRODUCTS_COLLECTION, ADMINS_COLLECTION } from "./fireba
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 auth.languageCode = "en";
 
 // --------------------------------------------------------------------------
@@ -395,6 +402,56 @@ function updateImagePreview() {
 }
 $("f_image").addEventListener("input", updateImagePreview);
 $("imgPreview").addEventListener("error", () => $("imgPreview").classList.remove("show"));
+
+// Image upload to Firebase Storage. On success, the download URL is written
+// into the image field so it saves with the product like any other URL.
+$("f_image_file").addEventListener("change", async (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+        setFormError("Please choose an image file.");
+        return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+        setFormError("Image is larger than 5 MB. Please choose a smaller file.");
+        return;
+    }
+
+    const btnText = $("uploadBtnText");
+    const originalText = btnText.textContent;
+    btnText.textContent = "Uploading…";
+    setFormError("");
+
+    try {
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+        const path = `products/${Date.now()}_${safeName}`;
+        const sRef = storageRef(storage, path);
+        await uploadBytes(sRef, file);
+        const url = await getDownloadURL(sRef);
+        $("f_image").value = url;
+        updateImagePreview();
+        btnText.textContent = "Uploaded ✓";
+        setTimeout(() => { btnText.textContent = originalText; }, 2000);
+    } catch (err) {
+        console.error(err);
+        btnText.textContent = originalText;
+        setFormError(uploadError(err));
+    } finally {
+        e.target.value = ""; // allow re-selecting the same file
+    }
+});
+
+function uploadError(err) {
+    const code = (err && err.code) || "";
+    if (code === "storage/unauthorized") {
+        return "Upload denied. Enable Firebase Storage and set its rules to allow admin writes (see SETUP.md). You can still paste an image URL instead.";
+    }
+    if (code === "storage/unknown" || code.includes("cors")) {
+        return "Storage upload failed (Storage may not be enabled). You can paste an image URL instead.";
+    }
+    return "Upload failed: " + ((err && err.message) || "unknown") + ". You can paste an image URL instead.";
+}
 
 els.productForm.addEventListener("submit", async (e) => {
     e.preventDefault();

@@ -143,8 +143,15 @@
                     </div>
 
                     <div class="form-field span-2">
-                        <label for="f_image">Image URL *</label>
+                        <label for="f_image">Image *</label>
                         <input type="url" id="f_image" required placeholder="assets/pashmina_shawl.png or https://…">
+                        <div class="upload-row">
+                            <label class="upload-btn" for="f_image_file">
+                                <span id="uploadBtnText">Upload image…</span>
+                                <input type="file" id="f_image_file" accept="image/*" hidden>
+                            </label>
+                            <span class="upload-hint">or paste a URL above</span>
+                        </div>
                     </div>
 
                     <div class="form-field span-2">

@@ -52,6 +52,28 @@ an `admins` collection. Add your UID once:
 
 To add more admins later, repeat steps 1–3 for each person's UID.
 
+### 5. (Optional) Enable image uploads
+The product form lets you either paste an image URL **or** upload a file. File
+upload uses Firebase Storage:
+
+1. Console → **Storage** → **Get started** (start in production mode).
+2. Console → **Storage → Rules**, and publish rules that let admins write:
+
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /products/{file=**} {
+      allow read: if true;                  // public product images
+      allow write: if request.auth != null  // signed-in admins only
+        && firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid));
+    }
+  }
+}
+```
+
+If you skip this, image **URLs** still work everywhere — only file upload needs Storage.
+
 ---
 
 ## Product data model

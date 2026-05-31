@@ -1,9 +1,11 @@
 // SN ART - Heritage eCommerce Logic
 
 // ==========================================================================
-// 1. Mock Database: Masterpiece Catalog
+// 1. Product Catalog
+// Default/fallback catalogue. When Firebase is configured and the "products"
+// collection has documents, these are replaced live (see loadProductsFromFirestore).
 // ==========================================================================
-const products = [
+let products = [
     {
         id: "p1",
         name: "Oval Market Tokri",
@@ -186,14 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Checkout Event
-    document.getElementById("checkoutBtn").addEventListener("click", () => {
-        alert("Thank you for your order! Your luxury commission has been registered. Our concierge will contact you shortly.");
-        cart = [];
-        saveCart();
-        updateBadges();
-        closeAllDrawers();
-    });
+    // Checkout Event — sends the order to SN ART via WhatsApp
+    document.getElementById("checkoutBtn").addEventListener("click", checkoutViaWhatsApp);
 
     // Mobile Navigation Toggle
     const mobileToggle = document.getElementById("mobileNavToggle");
@@ -431,6 +427,78 @@ function renderCart() {
 
 function saveCart() {
     localStorage.setItem("sn_cart", JSON.stringify(cart));
+}
+
+// ==========================================================================
+// Firebase storefront bridge
+// The Firestore module (firebase-store.js, loaded as a module in index.html)
+// calls window.snLoadProducts(list) when live products are available. This
+// swaps the catalogue and re-renders the grid + any open views.
+// ==========================================================================
+window.snLoadProducts = function (liveProducts) {
+    if (!Array.isArray(liveProducts) || liveProducts.length === 0) return;
+    products = liveProducts;
+    const activeFilter = document.querySelector(".filter-tab.active")?.getAttribute("data-filter") || "all";
+    renderProducts(activeFilter);
+    // Refresh cart/wishlist views so names/prices stay in sync with live data
+    if (typeof renderCart === "function") renderCart();
+    if (typeof renderWishlist === "function") renderWishlist();
+};
+
+// SN ART WhatsApp business number (used for checkout + inquiries)
+const SN_WHATSAPP = "919103076776";
+
+// Build an order summary and open WhatsApp with the details pre-filled.
+function checkoutViaWhatsApp() {
+    if (cart.length === 0) {
+        showCartToast("Your cart is empty.");
+        return;
+    }
+
+    let subtotal = 0;
+    const lines = cart.map((item, i) => {
+        const prod = products.find(p => p.id === item.id);
+        if (!prod) return "";
+        const lineTotal = prod.price * item.quantity;
+        subtotal += lineTotal;
+        return `${i + 1}. ${prod.name} — Qty ${item.quantity} x ₹${prod.price.toLocaleString("en-IN")} = ₹${lineTotal.toLocaleString("en-IN")}`;
+    }).filter(Boolean);
+
+    const message =
+        `*New Order — SN ART*\n\n` +
+        lines.join("\n") +
+        `\n\n*Subtotal:* ₹${subtotal.toLocaleString("en-IN")}` +
+        `\n*Shipping:* FREE` +
+        `\n*Total:* ₹${subtotal.toLocaleString("en-IN")}` +
+        `\n\nI would like to place this order. Please confirm availability and delivery to Ganderbal/Kashmir.`;
+
+    const url = `https://wa.me/${SN_WHATSAPP}?text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp in a new tab
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    // Clear cart after handing off the order
+    cart = [];
+    saveCart();
+    updateBadges();
+    renderCart();
+    closeAllDrawers();
+    showCartToast("Opening WhatsApp to confirm your order…");
+}
+
+// Lightweight toast for cart feedback (reuses no external dependency)
+function showCartToast(msg) {
+    let toast = document.getElementById("snCartToast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "snCartToast";
+        toast.className = "sn-cart-toast";
+        document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(showCartToast._t);
+    showCartToast._t = setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
 // ==========================================================================

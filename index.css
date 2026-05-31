@@ -2364,8 +2364,9 @@ button {
         justify-self: end;
     }
 
+    /* Admin login icon stays visible on mobile (users tap it to reach /admin) */
     .profile-btn-desktop {
-        display: none;
+        display: inline-flex;
     }
 
     /* Nav menu becomes an off-canvas drawer, removed from grid flow */
@@ -3678,6 +3679,12 @@ footer,
     }
     .section-title { font-size: 1.9rem; }
     .grid-item { height: 200px; }
+
+    /* Keep all header icons (search, wishlist, cart, admin) on one tidy row */
+    .nav-actions { gap: 0.3rem; }
+    .action-btn { padding: 0.35rem; }
+    .action-btn svg { width: 18px; height: 18px; }
+    .action-badge { width: 14px; height: 14px; font-size: 0.55rem; }
 }
 
 /* --------------------------------------------------------------------------
@@ -3719,4 +3726,30 @@ footer,
     .logo-subtitle { display: none; }
     .stat-number { font-size: 1.7rem; }
     .grid-item { height: 165px; }
+}
+
+
+/* ==========================================================================
+   Cart / checkout toast
+   ========================================================================== */
+.sn-cart-toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(140%);
+    background: var(--color-bg-card, #121212);
+    color: var(--color-cream, #FAF6EE);
+    border: 1px solid var(--color-saffron, #C8882A);
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-family: var(--font-body, sans-serif);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    z-index: 3000;
+    transition: transform 0.35s cubic-bezier(0.25,1,0.5,1);
+    max-width: 90vw;
+    text-align: center;
+}
+.sn-cart-toast.show {
+    transform: translateX(-50%) translateY(0);
 }
