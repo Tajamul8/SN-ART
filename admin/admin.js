@@ -13,6 +13,7 @@ import {
     collection,
     doc,
     getDoc,
+    setDoc,
     addDoc,
     updateDoc,
     deleteDoc,
@@ -57,6 +58,9 @@ const CATEGORY_LABELS = {
     other: "Other"
 };
 
+const SITE_CONFIG_COLLECTION = "site_config";
+const SITE_CONFIG_DOC = "main";
+
 // --------------------------------------------------------------------------
 // Element helpers
 // --------------------------------------------------------------------------
@@ -80,6 +84,11 @@ const els = {
     adminWho: $("adminWho"),
     addProductBtn: $("addProductBtn"),
     signOutBtn: $("signOutBtn"),
+    tabProducts: $("tabProducts"),
+    tabSettings: $("tabSettings"),
+    saveSettingsBtn: $("saveSettingsBtn"),
+    siteSettingsForm: $("siteSettingsForm"),
+    settingsFormError: $("settingsFormError"),
     countTotal: $("countTotal"),
     countOos: $("countOos"),
     searchBox: $("searchBox"),
@@ -107,7 +116,10 @@ const els = {
 // --------------------------------------------------------------------------
 let productsCache = [];          // latest snapshot of products
 let unsubscribeProducts = null;  // Firestore listener cleanup
+let unsubscribeConfig = null;    // Firestore listener cleanup for site settings
 let pendingDeleteId = null;
+let siteConfigCache = null;
+let activeSection = "products";
 
 // --------------------------------------------------------------------------
 // UI utilities
@@ -121,11 +133,45 @@ function showToast(message, isError = false) {
 
 function setAuthError(msg) { els.authError.textContent = msg || ""; }
 function setFormError(msg) { els.formError.textContent = msg || ""; }
+function setSettingsError(msg) { if (els.settingsFormError) els.settingsFormError.textContent = msg || ""; }
 
 function showAuthStep(step) {
     els.stepPhone.classList.toggle("hidden", step !== "phone");
     els.stepOtp.classList.toggle("hidden", step !== "otp");
     els.stepDenied.classList.toggle("hidden", step !== "denied");
+}
+
+function switchSection(section) {
+    activeSection = section;
+    const productsSection = document.getElementById("productsSection");
+    const settingsSection = document.getElementById("settingsSection");
+    const dashTag = document.getElementById("dashTag");
+
+    if (productsSection && settingsSection) {
+        productsSection.classList.toggle("hidden", section !== "products");
+        settingsSection.classList.toggle("hidden", section !== "settings");
+    }
+    if (dashTag) {
+        dashTag.textContent = section === "settings" ? "Site Settings" : "Product Manager";
+    }
+    if (els.addProductBtn) els.addProductBtn.classList.toggle("hidden", section !== "products");
+    if (els.saveSettingsBtn) els.saveSettingsBtn.classList.toggle("hidden", section !== "settings");
+    if (els.tabProducts) els.tabProducts.classList.toggle("active", section === "products");
+    if (els.tabSettings) els.tabSettings.classList.toggle("active", section === "settings");
+}
+
+function loadSiteConfigForm(config) {
+    siteConfigCache = config || {};
+    if (!els.siteSettingsForm) return;
+    document.getElementById("s_heroSubtitle").value = config.heroSubtitle || "";
+    document.getElementById("s_heroTitle").value = config.heroTitle || "";
+    document.getElementById("s_heroDescription").value = config.heroDescription || "";
+    document.getElementById("s_heroPrimaryLabel").value = config.heroPrimaryLabel || "";
+    document.getElementById("s_heroSecondaryLabel").value = config.heroSecondaryLabel || "";
+    document.getElementById("s_whatsappNumber").value = config.whatsappNumber || "";
+    document.getElementById("s_footerDescription").value = config.footerDescription || "";
+    document.getElementById("s_newsletterSub").value = config.newsletterSub || "";
+    document.getElementById("s_newsletterTitle").value = config.newsletterTitle || "";
 }
 
 // --------------------------------------------------------------------------
@@ -182,7 +228,9 @@ function openDashboard() {
     els.authView.classList.add("hidden");
     els.dashView.classList.remove("hidden");
     els.adminWho.textContent = DEMO_PHONE;
+    switchSection("products");
     startProductsListener();
+    startConfigListener();
 }
 
 // On load: if a demo session exists, go straight to the dashboard.
@@ -217,12 +265,35 @@ function startProductsListener() {
     });
 }
 
+function startConfigListener() {
+    if (unsubscribeConfig) return;
+    const configRef = doc(db, SITE_CONFIG_COLLECTION, SITE_CONFIG_DOC);
+    unsubscribeConfig = onSnapshot(configRef, (snap) => {
+        if (!snap.exists()) {
+            if (els.siteSettingsForm) {
+                loadSiteConfigForm({});
+            }
+            return;
+        }
+        const config = snap.data();
+        loadSiteConfigForm(config);
+    }, (err) => {
+        console.error("Site config listener error:", err);
+        showToast("Could not load site settings. Check Firestore rules.", true);
+    });
+}
+
 function teardownDashboard() {
     if (unsubscribeProducts) {
         unsubscribeProducts();
         unsubscribeProducts = null;
     }
+    if (unsubscribeConfig) {
+        unsubscribeConfig();
+        unsubscribeConfig = null;
+    }
     productsCache = [];
+    siteConfigCache = null;
 }
 
 // --------------------------------------------------------------------------
@@ -507,6 +578,44 @@ els.modalCloseBtn.addEventListener("click", closeProductModal);
 els.cancelBtn.addEventListener("click", closeProductModal);
 els.deleteCloseBtn.addEventListener("click", closeDeleteModal);
 els.deleteCancelBtn.addEventListener("click", closeDeleteModal);
+
+if (els.tabProducts) {
+    els.tabProducts.addEventListener("click", () => switchSection("products"));
+}
+if (els.tabSettings) {
+    els.tabSettings.addEventListener("click", () => switchSection("settings"));
+}
+if (els.saveSettingsBtn) {
+    els.saveSettingsBtn.addEventListener("click", async () => {
+        if (!els.siteSettingsForm) return;
+        setSettingsError("");
+        const config = {
+            heroSubtitle: document.getElementById("s_heroSubtitle").value.trim(),
+            heroTitle: document.getElementById("s_heroTitle").value.trim(),
+            heroDescription: document.getElementById("s_heroDescription").value.trim(),
+            heroPrimaryLabel: document.getElementById("s_heroPrimaryLabel").value.trim(),
+            heroSecondaryLabel: document.getElementById("s_heroSecondaryLabel").value.trim(),
+            whatsappNumber: document.getElementById("s_whatsappNumber").value.replace(/\D/g, ""),
+            footerDescription: document.getElementById("s_footerDescription").value.trim(),
+            newsletterSub: document.getElementById("s_newsletterSub").value.trim(),
+            newsletterTitle: document.getElementById("s_newsletterTitle").value.trim()
+        };
+
+        try {
+            els.saveSettingsBtn.disabled = true;
+            els.saveSettingsBtn.textContent = "Saving…";
+            await setDoc(doc(db, SITE_CONFIG_COLLECTION, SITE_CONFIG_DOC), config, { merge: true });
+            showToast("Site settings saved.");
+        } catch (err) {
+            console.error(err);
+            setSettingsError("Could not save settings. Check Firestore permissions.");
+        } finally {
+            els.saveSettingsBtn.disabled = false;
+            els.saveSettingsBtn.textContent = "Save Settings";
+        }
+    });
+}
+els.settingsFormError && els.settingsFormError.addEventListener("click", () => setSettingsError(""));
 
 // Close modals on backdrop click / Escape
 [els.productModal, els.deleteModal].forEach((overlay) => {

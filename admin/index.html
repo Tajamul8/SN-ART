@@ -57,42 +57,100 @@
         <header class="dash-header">
             <div class="dash-brand">
                 <span class="auth-logo sm">SN<span class="auth-accent">ART</span></span>
-                <span class="dash-tag">Product Manager</span>
+                <span class="dash-tag" id="dashTag">Product Manager</span>
+            </div>
+            <div class="dash-tabs">
+                <button class="tab-btn active" id="tabProducts">Products</button>
+                <button class="tab-btn" id="tabSettings">Site Settings</button>
             </div>
             <div class="dash-header-actions">
                 <span class="admin-who" id="adminWho"></span>
                 <button class="admin-btn admin-btn-primary" id="addProductBtn">+ Add Product</button>
+                <button class="admin-btn admin-btn-primary hidden" id="saveSettingsBtn">Save Settings</button>
                 <button class="admin-btn admin-btn-ghost" id="signOutBtn">Sign out</button>
             </div>
         </header>
 
         <div class="dash-body">
-            <!-- Toolbar -->
-            <div class="dash-toolbar">
-                <div class="stat-pill">Total Products: <strong id="countTotal">0</strong></div>
-                <div class="stat-pill">Out of Stock: <strong id="countOos">0</strong></div>
-                <input type="search" id="searchBox" class="dash-search" placeholder="Search products…">
+            <div id="productsSection">
+                <!-- Toolbar -->
+                <div class="dash-toolbar">
+                    <div class="stat-pill">Total Products: <strong id="countTotal">0</strong></div>
+                    <div class="stat-pill">Out of Stock: <strong id="countOos">0</strong></div>
+                    <input type="search" id="searchBox" class="dash-search" placeholder="Search products…">
+                </div>
+
+                <!-- Loading / empty states -->
+                <div class="dash-state" id="loadingState">Loading products…</div>
+                <div class="dash-state hidden" id="emptyState">No products yet. Click “Add Product” to create your first one.</div>
+
+                <!-- Product table (desktop) / cards (mobile) -->
+                <div class="table-wrap" id="tableWrap">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th class="col-img">Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th class="col-num">Price (₹)</th>
+                                <th class="col-num">Stock</th>
+                                <th class="col-actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody"></tbody>
+                    </table>
+                </div>
             </div>
 
-            <!-- Loading / empty states -->
-            <div class="dash-state" id="loadingState">Loading products…</div>
-            <div class="dash-state hidden" id="emptyState">No products yet. Click “Add Product” to create your first one.</div>
+            <div id="settingsSection" class="hidden">
+                <form id="siteSettingsForm" class="settings-panel">
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>Homepage Hero</h3>
+                            <div class="form-field">
+                                <label for="s_heroSubtitle">Hero subtitle</label>
+                                <input type="text" id="s_heroSubtitle" maxlength="120" placeholder="Authentic Kashmiri Crafts • Handcrafted Since 1967">
+                            </div>
+                            <div class="form-field">
+                                <label for="s_heroTitle">Hero title</label>
+                                <input type="text" id="s_heroTitle" maxlength="120" placeholder="The Soul of Kashmir In Your Hands">
+                            </div>
+                            <div class="form-field">
+                                <label for="s_heroDescription">Hero description</label>
+                                <textarea id="s_heroDescription" rows="4" maxlength="320" placeholder="Celebrate generations of exquisite Kashmiri craftsmanship..."></textarea>
+                            </div>
+                            <div class="form-field">
+                                <label for="s_heroPrimaryLabel">Primary button label</label>
+                                <input type="text" id="s_heroPrimaryLabel" maxlength="40" placeholder="Explore Collection">
+                            </div>
+                            <div class="form-field">
+                                <label for="s_heroSecondaryLabel">Secondary button label</label>
+                                <input type="text" id="s_heroSecondaryLabel" maxlength="40" placeholder="View Gallery">
+                            </div>
+                        </div>
 
-            <!-- Product table (desktop) / cards (mobile) -->
-            <div class="table-wrap" id="tableWrap">
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th class="col-img">Image</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th class="col-num">Price (₹)</th>
-                            <th class="col-num">Stock</th>
-                            <th class="col-actions">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productTableBody"></tbody>
-                </table>
+                        <div class="settings-card">
+                            <h3>Brand & Contact</h3>
+                            <div class="form-field">
+                                <label for="s_whatsappNumber">WhatsApp number</label>
+                                <input type="text" id="s_whatsappNumber" maxlength="20" placeholder="919103076776">
+                            </div>
+                            <div class="form-field">
+                                <label for="s_footerDescription">Footer description</label>
+                                <textarea id="s_footerDescription" rows="4" maxlength="280" placeholder="SN ART is an editorial design house..."></textarea>
+                            </div>
+                            <div class="form-field">
+                                <label for="s_newsletterSub">Newsletter subtitle</label>
+                                <input type="text" id="s_newsletterSub" maxlength="80" placeholder="Stories From The Valley">
+                            </div>
+                            <div class="form-field">
+                                <label for="s_newsletterTitle">Newsletter heading</label>
+                                <input type="text" id="s_newsletterTitle" maxlength="80" placeholder="Subscribe to the Heritage Chronicle">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="form-error" id="settingsFormError"></p>
+                </form>
             </div>
         </div>
     </section>

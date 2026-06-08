@@ -25,6 +25,12 @@ service cloud.firestore {
       allow write: if true;    // DEMO: open writes (no auth). Lock down for production.
     }
 
+    // ---- Site settings ----
+    match /site_config/{configId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
     // ---- Orders (created by storefront checkout) ----
     match /orders/{orderId} {
       allow create: if true;   // customers can place orders

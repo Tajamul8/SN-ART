@@ -514,7 +514,36 @@ window.snLoadProducts = function (liveProducts) {
 };
 
 // SN ART WhatsApp business number (used for optional order confirmation)
-const SN_WHATSAPP = "919103076776";
+let SN_WHATSAPP = "919103076776";
+
+window.snLoadSiteConfig = function (config) {
+    if (!config || typeof config !== "object") return;
+    if (config.whatsappNumber) {
+        SN_WHATSAPP = String(config.whatsappNumber).replace(/\D/g, "");
+    }
+
+    const heroSubtitle = document.getElementById("heroSubtitle");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroDescription = document.getElementById("heroDescription");
+    const heroPrimaryBtn = document.getElementById("heroPrimaryBtn");
+    const heroSecondaryBtn = document.getElementById("heroSecondaryBtn");
+    const footerDescription = document.getElementById("footerDescription");
+    const newsletterTitle = document.getElementById("newsletterTitle");
+    const newsletterSub = document.getElementById("newsletterSub");
+    const footerWhatsappLink = document.getElementById("footerWhatsappLink");
+
+    if (heroSubtitle && config.heroSubtitle) heroSubtitle.textContent = config.heroSubtitle;
+    if (heroTitle && config.heroTitle) heroTitle.innerHTML = config.heroTitle;
+    if (heroDescription && config.heroDescription) heroDescription.textContent = config.heroDescription;
+    if (heroPrimaryBtn && config.heroPrimaryLabel) heroPrimaryBtn.textContent = config.heroPrimaryLabel;
+    if (heroSecondaryBtn && config.heroSecondaryLabel) heroSecondaryBtn.textContent = config.heroSecondaryLabel;
+    if (footerDescription && config.footerDescription) footerDescription.textContent = config.footerDescription;
+    if (newsletterTitle && config.newsletterTitle) newsletterTitle.textContent = config.newsletterTitle;
+    if (newsletterSub && config.newsletterSub) newsletterSub.textContent = config.newsletterSub;
+    if (footerWhatsappLink && config.whatsappNumber) {
+        footerWhatsappLink.href = `https://wa.me/${SN_WHATSAPP}`;
+    }
+};
 
 // ==========================================================================
 // PAYMENT CONFIGURATION
@@ -644,7 +673,8 @@ function checkoutViaWhatsApp() {
         `\n*Total:* ₹${subtotal.toLocaleString("en-IN")}` +
         `\n\nPlease confirm availability and delivery to the address above.`;
 
-    const url = `https://wa.me/${SN_WHATSAPP}?text=${encodeURIComponent(message)}`;
+    const whatsappTarget = SN_WHATSAPP || "919103076776";
+    const url = `https://wa.me/${whatsappTarget}?text=${encodeURIComponent(message)}`;
 
     // Open WhatsApp in a new tab
     window.open(url, "_blank", "noopener,noreferrer");

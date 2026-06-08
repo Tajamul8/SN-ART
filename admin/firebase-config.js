@@ -19,6 +19,9 @@ export const firebaseConfig = {
 // Firestore collection that holds product documents.
 export const PRODUCTS_COLLECTION = "products";
 
+// Firestore collection that holds live site configuration values.
+export const SITE_CONFIG_COLLECTION = "site_config";
+
 // Firestore collection that holds authorised admin UIDs (one doc per admin,
 // document ID = the user's Firebase Auth UID).
 export const ADMINS_COLLECTION = "admins";

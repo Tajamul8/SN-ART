@@ -13,7 +13,7 @@ import {
     orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import { firebaseConfig, PRODUCTS_COLLECTION } from "./admin/firebase-config.js";
+import { firebaseConfig, PRODUCTS_COLLECTION, SITE_CONFIG_COLLECTION } from "./admin/firebase-config.js";
 
 const CATEGORY_LABELS = {
     tokri: "Kashmiri Tokri Baskets",
@@ -62,6 +62,21 @@ try {
         (err) => {
             // Non-fatal: log and keep the fallback catalogue.
             console.warn("SN ART: live products unavailable, using built-in catalogue.", err.code || err.message);
+        }
+    );
+
+    const configDoc = doc(db, SITE_CONFIG_COLLECTION, "main");
+    onSnapshot(
+        configDoc,
+        (snap) => {
+            if (!snap.exists()) return;
+            const data = snap.data();
+            if (typeof window.snLoadSiteConfig === "function") {
+                window.snLoadSiteConfig(data);
+            }
+        },
+        (err) => {
+            console.warn("SN ART: live site config unavailable.", err.code || err.message);
         }
     );
 } catch (err) {
