@@ -95,6 +95,21 @@ let products = [
         dimensions: "80\" x 40\"",
         material: "100% Changthangi Cashmere",
         origin: "Kanihama, Kashmir"
+    },
+    {
+        id: "p7",
+        name: "Chinar Leaf Candle Holder",
+        category: "wood_carving",
+        categoryName: "Wood Carving & Khatamband",
+        price: 5400,
+        rating: 4.9,
+        reviews: 13,
+        image: "assets/wood_carving.png",
+        badge: "Artisan Craft",
+        details: "A hand-carved walnut candle holder inspired by Kashmir's iconic Chinar leaf. Finished with warm copper accents, it brings a ceremonial glow to festive tables and luxury interiors.",
+        dimensions: "7\" x 7\" x 3\"",
+        material: "Seasoned Walnut Wood, Copper Inlay",
+        origin: "Safakadal, Srinagar"
     }
 ];
 
@@ -129,6 +144,13 @@ const artisans = [
         experience: "34 Years of Experience",
         bio: "\"I mix mineral colors the way my ancestors did. Applying real gold leaf onto paper-pulp requires absolute stillness of breath. We paint the stories of the Mughal gardens in miniature motifs.\"",
         image: "assets/papier_mache.png"
+    },
+    {
+        name: "Ameena Khatri",
+        specialty: "Kani Embroidery",
+        experience: "22 Years of Experience",
+        bio: "\"Every pattern I weave is a family story. My Kani motifs are counted thread by thread, and each shawl sends a blessing with every fold.\"",
+        image: "assets/pashmina_shawl.png"
     }
 ];
 
@@ -193,6 +215,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".pay-option").forEach(btn => {
         btn.addEventListener("click", () => payWithProvider(btn.getAttribute("data-pay")));
     });
+
+    const clearCartBtn = document.getElementById("clearCartBtn");
+    if (clearCartBtn) clearCartBtn.addEventListener("click", clearCart);
+    const clearWishlistBtn = document.getElementById("clearWishlistBtn");
+    if (clearWishlistBtn) clearWishlistBtn.addEventListener("click", clearWishlist);
 
     // Mobile Navigation Toggle
     const mobileToggle = document.getElementById("mobileNavToggle");
@@ -437,6 +464,31 @@ function renderCart() {
 
 function saveCart() {
     localStorage.setItem("sn_cart", JSON.stringify(cart));
+}
+
+function clearCart() {
+    if (cart.length === 0) {
+        showCartToast("Your cart is already empty.");
+        return;
+    }
+    cart = [];
+    saveCart();
+    updateBadges();
+    renderCart();
+    showCartToast("Your cart has been cleared.");
+}
+
+function clearWishlist() {
+    if (wishlist.length === 0) {
+        showCartToast("Your wishlist is already empty.");
+        return;
+    }
+    wishlist = [];
+    saveWishlist();
+    updateBadges();
+    renderWishlist();
+    renderProducts(document.querySelector(".filter-tab.active")?.getAttribute("data-filter") || "all");
+    showCartToast("Wishlist cleared. Explore new favorites.");
 }
 
 // ==========================================================================
