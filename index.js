@@ -160,6 +160,7 @@ const artisans = [
 let cart = JSON.parse(localStorage.getItem("sn_cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("sn_wishlist")) || [];
 let currentArtisanIndex = 0;
+let orderDetails = null;
 
 // ==========================================================================
 // 4. Initializer & Event Listeners Binding
@@ -215,6 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".pay-option").forEach(btn => {
         btn.addEventListener("click", () => payWithProvider(btn.getAttribute("data-pay")));
     });
+
+    const orderForm = document.getElementById("orderConfirmationForm");
+    if (orderForm) {
+        orderForm.addEventListener("submit", handleOrderFormSubmit);
+    }
 
     const clearCartBtn = document.getElementById("clearCartBtn");
     if (clearCartBtn) clearCartBtn.addEventListener("click", clearCart);
@@ -548,7 +554,21 @@ function showPaymentStep() {
     document.getElementById("cartEmptyState").style.display = "none";
     document.getElementById("cartDrawerFooter").style.display = "none";
     document.getElementById("paymentStep").style.display = "block";
-    document.getElementById("cartDrawerTitle").textContent = "Payment";
+    document.getElementById("cartDrawerTitle").textContent = "Order Confirmation";
+
+    const orderFormSection = document.getElementById("orderFormSection");
+    const paymentOptionsSection = document.getElementById("paymentOptionsSection");
+    const confirmedMessage = document.getElementById("orderConfirmedMessage");
+
+    if (orderDetails) {
+        orderFormSection.style.display = "none";
+        paymentOptionsSection.style.display = "block";
+        confirmedMessage.style.display = "block";
+    } else {
+        orderFormSection.style.display = "block";
+        paymentOptionsSection.style.display = "none";
+        confirmedMessage.style.display = "none";
+    }
 }
 
 function hidePaymentStep() {
@@ -563,6 +583,11 @@ function hidePaymentStep() {
 // otherwise it shows a friendly "coming soon" message (so the UI is fully
 // functional and ready for you to plug in payment links later).
 function payWithProvider(method) {
+    if (!orderDetails) {
+        showCartToast("Please confirm your delivery details before choosing a payment method.");
+        return;
+    }
+
     const total = cartSubtotal();
     if (total <= 0) { showCartToast("Your cart is empty."); return; }
 
@@ -580,7 +605,7 @@ function payWithProvider(method) {
         }
     } else {
         // No link yet — graceful placeholder.
-        showCartToast(`${provider.label} payment will be available soon.`);
+        showCartToast(`${provider.label} payment will be available soon. Your order details are ready for WhatsApp.`);
     }
 }
 
@@ -588,6 +613,11 @@ function payWithProvider(method) {
 function checkoutViaWhatsApp() {
     if (cart.length === 0) {
         showCartToast("Your cart is empty.");
+        return;
+    }
+
+    if (!orderDetails) {
+        showCartToast("Please confirm your delivery details before sending the order.");
         return;
     }
 
@@ -602,11 +632,17 @@ function checkoutViaWhatsApp() {
 
     const message =
         `*New Order — SN ART*\n\n` +
+        `*Customer Details*\n` +
+        `Name: ${orderDetails.name}\n` +
+        `Phone: ${orderDetails.phone}\n` +
+        `Address: ${orderDetails.address}\n` +
+        `Pincode: ${orderDetails.pincode}\n\n` +
+        `*Order Items*\n` +
         lines.join("\n") +
         `\n\n*Subtotal:* ₹${subtotal.toLocaleString("en-IN")}` +
         `\n*Shipping:* FREE` +
         `\n*Total:* ₹${subtotal.toLocaleString("en-IN")}` +
-        `\n\nI would like to place this order. Please confirm availability and delivery to Ganderbal/Kashmir.`;
+        `\n\nPlease confirm availability and delivery to the address above.`;
 
     const url = `https://wa.me/${SN_WHATSAPP}?text=${encodeURIComponent(message)}`;
 
@@ -707,6 +743,27 @@ function renderWishlist() {
 
 function saveWishlist() {
     localStorage.setItem("sn_wishlist", JSON.stringify(wishlist));
+}
+
+function handleOrderFormSubmit(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("orderName").value.trim();
+    const phone = document.getElementById("orderPhone").value.trim();
+    const address = document.getElementById("orderAddress").value.trim();
+    const pincode = document.getElementById("orderPincode").value.trim();
+
+    if (!name || !phone || !address || !pincode) {
+        showCartToast("Please fill in all delivery details.");
+        return;
+    }
+
+    orderDetails = { name, phone, address, pincode };
+    document.getElementById("orderFormSection").style.display = "none";
+    document.getElementById("paymentOptionsSection").style.display = "block";
+    document.getElementById("orderConfirmedMessage").style.display = "block";
+    document.getElementById("cartDrawerTitle").textContent = "Payment";
+    showCartToast("Delivery details saved. Select a payment method or WhatsApp to confirm.");
 }
 
 // Update badges in header

@@ -738,32 +738,59 @@
                     </svg>
                     Back to Cart
                 </button>
-                <h4 class="payment-heading">Choose Payment Method</h4>
+                <h4 class="payment-heading">Confirm Delivery Details</h4>
                 <p class="payment-amount">Amount payable: <strong id="payAmount">₹0</strong></p>
 
-                <div class="payment-options" id="paymentOptions">
-                    <button class="pay-option" data-pay="gpay">
-                        <span class="pay-logo gpay">G Pay</span>
-                        <span class="pay-name">Google Pay</span>
-                    </button>
-                    <button class="pay-option" data-pay="phonepe">
-                        <span class="pay-logo phonepe">PhonePe</span>
-                        <span class="pay-name">PhonePe</span>
-                    </button>
-                    <button class="pay-option" data-pay="paytm">
-                        <span class="pay-logo paytm">Paytm</span>
-                        <span class="pay-name">Paytm UPI</span>
-                    </button>
-                    <button class="pay-option" data-pay="upi">
-                        <span class="pay-logo upi">UPI</span>
-                        <span class="pay-name">Any UPI App</span>
-                    </button>
+                <div id="orderFormSection" class="order-form-section">
+                    <form id="orderConfirmationForm" class="order-confirmation-form">
+                        <div class="form-group">
+                            <label for="orderName">Full Name</label>
+                            <input type="text" id="orderName" name="orderName" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderPhone">Phone Number</label>
+                            <input type="tel" id="orderPhone" name="orderPhone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderAddress">Delivery Address</label>
+                            <textarea id="orderAddress" name="orderAddress" rows="3" placeholder="Street, locality, landmark" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderPincode">Pincode / ZIP</label>
+                            <input type="text" id="orderPincode" name="orderPincode" placeholder="Enter postal code" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Confirm Details</button>
+                    </form>
+                    <p class="form-note">Your order details will be sent directly over WhatsApp for order confirmation and delivery.</p>
                 </div>
 
-                <div class="payment-divider"><span>or</span></div>
+                <div id="paymentOptionsSection" style="display: none;">
+                    <div id="orderConfirmedMessage" class="payment-confirmed" style="display: none;">Delivery details confirmed. Choose a payment method or send the order via WhatsApp.</div>
+                    <h4 class="payment-heading">Choose Payment Method</h4>
+                    <div class="payment-options" id="paymentOptions">
+                        <button class="pay-option" data-pay="gpay">
+                            <span class="pay-logo gpay">G Pay</span>
+                            <span class="pay-name">Google Pay</span>
+                        </button>
+                        <button class="pay-option" data-pay="phonepe">
+                            <span class="pay-logo phonepe">PhonePe</span>
+                            <span class="pay-name">PhonePe</span>
+                        </button>
+                        <button class="pay-option" data-pay="paytm">
+                            <span class="pay-logo paytm">Paytm</span>
+                            <span class="pay-name">Paytm UPI</span>
+                        </button>
+                        <button class="pay-option" data-pay="upi">
+                            <span class="pay-logo upi">UPI</span>
+                            <span class="pay-name">Any UPI App</span>
+                        </button>
+                    </div>
 
-                <button class="btn btn-secondary btn-block" id="payWhatsappBtn">Order via WhatsApp</button>
-                <p class="payment-note">Select a UPI app to pay securely. Prefer to talk first? Send your order on WhatsApp and we'll confirm the details.</p>
+                    <div class="payment-divider"><span>or</span></div>
+
+                    <button class="btn btn-secondary btn-block" id="payWhatsappBtn">Order via WhatsApp</button>
+                    <p class="payment-note">Your delivery details will be included in the WhatsApp order message.</p>
+                </div>
             </div>
         </div>
         <div class="drawer-footer" id="cartDrawerFooter" style="display: none;">
